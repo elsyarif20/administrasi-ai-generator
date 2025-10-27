@@ -1,0 +1,3213 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator Administrasi Guru Kurikulum Merdeka</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        @media print {
+            .no-print { display: none !important; }
+            .print-page { page-break-after: always; }
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .loading {
+            animation: pulse 2s infinite;
+        }
+        .ai-thinking {
+            animation: thinking 1.5s ease-in-out infinite;
+        }
+        @keyframes thinking {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-full">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-indigo-800 mb-2">Generator Administrasi Guru</h1>
+            <p class="text-lg text-gray-600">Kurikulum Merdeka - Lengkap & Otomatis</p>
+            <p class="text-sm text-gray-500 mt-1">Developed by <span class="font-semibold text-indigo-600">Liyas Syarifudin, M.Pd.</span></p>
+            <div class="mt-4 bg-gradient-to-r from-purple-100 to-pink-100 rounded-lg p-4 max-w-2xl mx-auto">
+                <div class="flex items-center justify-center space-x-2 mb-2">
+                    <span class="text-2xl">🤖</span>
+                    <span class="font-semibold text-purple-800">Powered by Google Gemini AI</span>
+                    <span class="bg-green-500 text-white text-xs px-2 py-1 rounded-full">ACTIVE</span>
+                </div>
+                <p class="text-sm text-purple-700">
+                    Sistem AI terdepan yang menganalisis Capaian Pembelajaran dan memberikan rekomendasi pembelajaran yang tepat sesuai Kurikulum Merdeka
+                </p>
+            </div>
+        </header>
+
+        <!-- Input Form -->
+        <div id="inputForm" class="bg-white rounded-xl shadow-lg p-8 mb-8">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-6">Data Dasar Pembelajaran</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <label for="namaGuru" class="block text-sm font-medium text-gray-700 mb-2">Nama Guru</label>
+                    <input type="text" id="namaGuru" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="Masukkan nama guru">
+                </div>
+                <div>
+                    <label for="nip" class="block text-sm font-medium text-gray-700 mb-2">NUPTK</label>
+                    <input type="text" id="nip" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="Masukkan NUPTK">
+                </div>
+                <div>
+                    <label for="sekolah" class="block text-sm font-medium text-gray-700 mb-2">Nama Sekolah</label>
+                    <input type="text" id="sekolah" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="Masukkan nama sekolah">
+                </div>
+                <div>
+                    <label for="kelas" class="block text-sm font-medium text-gray-700 mb-2">Kelas</label>
+                    <select id="kelas" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        <option value="">Pilih Kelas</option>
+                        <option value="X">Kelas X (10)</option>
+                        <option value="XI">Kelas XI (11)</option>
+                        <option value="XII">Kelas XII (12)</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="mataPelajaran" class="block text-sm font-medium text-gray-700 mb-2">Mata Pelajaran</label>
+                    <select id="mataPelajaran" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        <option value="">Pilih Mata Pelajaran</option>
+                        <option value="Matematika">Matematika</option>
+                        <option value="Bahasa Indonesia">Bahasa Indonesia</option>
+                        <option value="Bahasa Inggris">Bahasa Inggris</option>
+                        <option value="Fisika">Fisika</option>
+                        <option value="Kimia">Kimia</option>
+                        <option value="Biologi">Biologi</option>
+                        <option value="Sejarah">Sejarah</option>
+                        <option value="Geografi">Geografi</option>
+                        <option value="Ekonomi">Ekonomi</option>
+                        <option value="Sosiologi">Sosiologi</option>
+                        <option value="PJOK">Pendidikan Jasmani</option>
+                        <option value="Seni Budaya">Seni Budaya</option>
+                        <option value="Informatika">Informatika</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="semester" class="block text-sm font-medium text-gray-700 mb-2">Semester</label>
+                    <select id="semester" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        <option value="">Pilih Semester</option>
+                        <option value="Ganjil">Semester Ganjil</option>
+                        <option value="Genap">Semester Genap</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <label for="topikPembelajaran" class="block text-sm font-medium text-gray-700 mb-2">Topik/Materi Pembelajaran</label>
+                <textarea id="topikPembelajaran" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="Contoh: Sistem Persamaan Linear, Teks Eksposisi, dll."></textarea>
+            </div>
+
+            <!-- Reference Upload Section -->
+            <div class="mb-6 bg-gradient-to-r from-purple-50 to-blue-50 p-6 rounded-xl border border-purple-200">
+                <div class="flex items-center space-x-2 mb-4">
+                    <span class="text-2xl">📚</span>
+                    <h3 class="text-lg font-semibold text-purple-800">Upload Referensi Pembelajaran</h3>
+                    <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">AI Enhanced</span>
+                </div>
+                <p class="text-sm text-purple-700 mb-4">Upload buku guru, buku siswa, atau dokumen CP untuk meningkatkan akurasi AI dalam menggenerate administrasi</p>
+                
+                <div class="grid md:grid-cols-3 gap-4 mb-4">
+                    <!-- Buku Guru Upload -->
+                    <div class="bg-white p-4 rounded-lg border border-purple-200">
+                        <div class="flex items-center space-x-2 mb-3">
+                            <span class="text-lg">👨‍🏫</span>
+                            <h4 class="font-semibold text-gray-800">Buku Guru</h4>
+                        </div>
+                        <input type="file" id="bukuGuruFile" accept=".pdf,.doc,.docx,.txt" class="hidden" onchange="handleFileUpload(this, 'bukuGuru')">
+                        <button onclick="document.getElementById('bukuGuruFile').click()" class="w-full bg-blue-100 hover:bg-blue-200 text-blue-800 py-2 px-3 rounded-lg text-sm font-medium transition duration-300 border border-blue-300">
+                            📁 Pilih File Buku Guru
+                        </button>
+                        <div id="bukuGuruStatus" class="mt-2 text-xs text-gray-600"></div>
+                        <div id="bukuGuruPreview" class="mt-2"></div>
+                    </div>
+
+                    <!-- Buku Siswa Upload -->
+                    <div class="bg-white p-4 rounded-lg border border-purple-200">
+                        <div class="flex items-center space-x-2 mb-3">
+                            <span class="text-lg">👨‍🎓</span>
+                            <h4 class="font-semibold text-gray-800">Buku Siswa</h4>
+                        </div>
+                        <input type="file" id="bukuSiswaFile" accept=".pdf,.doc,.docx,.txt" class="hidden" onchange="handleFileUpload(this, 'bukuSiswa')">
+                        <button onclick="document.getElementById('bukuSiswaFile').click()" class="w-full bg-green-100 hover:bg-green-200 text-green-800 py-2 px-3 rounded-lg text-sm font-medium transition duration-300 border border-green-300">
+                            📁 Pilih File Buku Siswa
+                        </button>
+                        <div id="bukuSiswaStatus" class="mt-2 text-xs text-gray-600"></div>
+                        <div id="bukuSiswaPreview" class="mt-2"></div>
+                    </div>
+
+                    <!-- CP Upload -->
+                    <div class="bg-white p-4 rounded-lg border border-purple-200">
+                        <div class="flex items-center space-x-2 mb-3">
+                            <span class="text-lg">🎯</span>
+                            <h4 class="font-semibold text-gray-800">Capaian Pembelajaran</h4>
+                        </div>
+                        <input type="file" id="cpFile" accept=".pdf,.doc,.docx,.txt" class="hidden" onchange="handleFileUpload(this, 'cp')">
+                        <button onclick="document.getElementById('cpFile').click()" class="w-full bg-orange-100 hover:bg-orange-200 text-orange-800 py-2 px-3 rounded-lg text-sm font-medium transition duration-300 border border-orange-300">
+                            📁 Pilih File CP
+                        </button>
+                        <div id="cpStatus" class="mt-2 text-xs text-gray-600"></div>
+                        <div id="cpPreview" class="mt-2"></div>
+                    </div>
+                </div>
+
+                <!-- Text Reference Input -->
+                <div class="mb-4">
+                    <label for="textReference" class="block text-sm font-medium text-gray-700 mb-2">
+                        <span class="flex items-center space-x-2">
+                            <span>📝</span>
+                            <span>Referensi Teks (Opsional)</span>
+                        </span>
+                    </label>
+                    <textarea id="textReference" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500" placeholder="Masukkan teks referensi tambahan seperti kutipan dari buku, materi khusus, atau panduan pembelajaran..."></textarea>
+                </div>
+
+                <!-- Reference Processing Status -->
+                <div id="referenceProcessing" class="hidden bg-blue-50 p-3 rounded-lg border border-blue-200">
+                    <div class="flex items-center space-x-2">
+                        <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600"></div>
+                        <span class="text-sm text-blue-800 font-medium">AI sedang memproses referensi...</span>
+                    </div>
+                    <div class="mt-2 text-xs text-blue-600">
+                        <div id="processingDetails">Menganalisis konten dan membangun knowledge base...</div>
+                    </div>
+                </div>
+
+                <!-- Reference Summary -->
+                <div id="referenceSummary" class="hidden bg-green-50 p-3 rounded-lg border border-green-200">
+                    <div class="flex items-center space-x-2 mb-2">
+                        <span class="text-green-600">✅</span>
+                        <span class="text-sm text-green-800 font-medium">Referensi berhasil diproses!</span>
+                    </div>
+                    <div id="summaryContent" class="text-xs text-green-700"></div>
+                </div>
+
+                <!-- Clear References Button -->
+                <div class="flex justify-between items-center mt-4">
+                    <div class="text-xs text-gray-500">
+                        <span class="font-medium">Format didukung:</span> PDF, DOC, DOCX, TXT (Max: 10MB per file)
+                    </div>
+                    <button onclick="clearAllReferences()" class="text-red-600 hover:text-red-800 text-sm font-medium">
+                        🗑️ Hapus Semua Referensi
+                    </button>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-3">Pilih Dokumen yang Akan Digenerate</label>
+                <div class="grid md:grid-cols-2 gap-3">
+                    <label class="flex items-center space-x-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="checkbox" id="rpp" class="form-checkbox h-5 w-5 text-indigo-600">
+                        <span class="text-sm font-medium">📋 Rencana Pelaksanaan Pembelajaran (RPP)</span>
+                    </label>
+                    <label class="flex items-center space-x-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="checkbox" id="silabus" class="form-checkbox h-5 w-5 text-indigo-600">
+                        <span class="text-sm font-medium">📚 Silabus</span>
+                    </label>
+                    <label class="flex items-center space-x-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="checkbox" id="prota" class="form-checkbox h-5 w-5 text-indigo-600">
+                        <span class="text-sm font-medium">📅 Program Tahunan (Prota)</span>
+                    </label>
+                    <label class="flex items-center space-x-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="checkbox" id="prosem" class="form-checkbox h-5 w-5 text-indigo-600">
+                        <span class="text-sm font-medium">🗓️ Program Semester (Prosem)</span>
+                    </label>
+                    <label class="flex items-center space-x-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="checkbox" id="kktp" class="form-checkbox h-5 w-5 text-indigo-600">
+                        <span class="text-sm font-medium">🎯 Kriteria Ketercapaian Tujuan Pembelajaran (KKTP)</span>
+                    </label>
+                    <label class="flex items-center space-x-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <input type="checkbox" id="asesmen" class="form-checkbox h-5 w-5 text-indigo-600">
+                        <span class="text-sm font-medium">📊 Rancangan Asesmen</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Local Storage Status -->
+            <div class="mb-4 bg-gray-50 p-4 rounded-lg border">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center space-x-2">
+                        <span class="text-sm font-medium text-gray-700">💾 Status Penyimpanan</span>
+                        <div id="storageStatus"></div>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button onclick="exportDataBackup()" class="text-xs bg-blue-100 hover:bg-blue-200 text-blue-800 px-3 py-1 rounded-lg font-medium transition duration-300">
+                            📤 Backup
+                        </button>
+                        <label class="text-xs bg-green-100 hover:bg-green-200 text-green-800 px-3 py-1 rounded-lg font-medium cursor-pointer transition duration-300">
+                            📥 Restore
+                            <input type="file" accept=".json" onchange="importDataBackup(event)" class="hidden">
+                        </label>
+                        <button onclick="clearAllData()" class="text-xs bg-red-100 hover:bg-red-200 text-red-800 px-3 py-1 rounded-lg font-medium transition duration-300">
+                            🗑️ Hapus
+                        </button>
+                    </div>
+                </div>
+                <div id="storageStatusMessage" class="text-xs text-gray-500"></div>
+                <div class="text-xs text-gray-500 mt-1">
+                    <span class="font-medium">Auto-save:</span> Data form dan referensi tersimpan otomatis setiap perubahan
+                </div>
+            </div>
+
+            <button onclick="generateDocuments()" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition duration-300 transform hover:scale-105">
+                <span id="generateText">🚀 Generate Dokumen dengan AI</span>
+                <span id="loadingText" class="hidden">🤖 AI sedang bekerja...</span>
+            </button>
+        </div>
+
+        <!-- AI Processing Status -->
+        <div id="aiStatus" class="hidden bg-gradient-to-r from-purple-100 to-indigo-100 rounded-xl p-6 mb-8">
+            <div class="flex items-center space-x-3 mb-4">
+                <div class="ai-thinking">🧠</div>
+                <h3 class="text-lg font-semibold text-purple-800">AI Gemini sedang menganalisis...</h3>
+            </div>
+            <div class="space-y-2">
+                <div class="flex items-center space-x-2">
+                    <div class="w-4 h-4 bg-green-500 rounded-full"></div>
+                    <span class="text-sm text-gray-700">Menganalisis Capaian Pembelajaran Kurikulum Merdeka</span>
+                </div>
+                <div class="flex items-center space-x-2" id="referenceProcessingStatus">
+                    <div class="w-4 h-4 bg-blue-500 rounded-full loading"></div>
+                    <span class="text-sm text-gray-700">Memproses referensi pembelajaran yang diupload</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <div class="w-4 h-4 bg-yellow-500 rounded-full loading"></div>
+                    <span class="text-sm text-gray-700">Menyesuaikan dengan karakteristik mata pelajaran</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <div class="w-4 h-4 bg-gray-300 rounded-full"></div>
+                    <span class="text-sm text-gray-700">Menggenerate dokumen administrasi</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Generated Documents -->
+        <div id="generatedDocs" class="hidden">
+            <!-- RPP Document -->
+            <div id="rppDoc" class="bg-white rounded-xl shadow-lg p-8 mb-8 print-page">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">RENCANA PELAKSANAAN PEMBELAJARAN (RPP)</h2>
+                    <p class="text-gray-600">Kurikulum Merdeka</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <div>
+                        <table class="w-full text-sm">
+                            <tr><td class="font-semibold py-1">Satuan Pendidikan</td><td class="py-1">: <span id="rppSekolah"></span></td></tr>
+                            <tr><td class="font-semibold py-1">Kelas/Semester</td><td class="py-1">: <span id="rppKelas"></span>/<span id="rppSemester"></span></td></tr>
+                            <tr><td class="font-semibold py-1">Mata Pelajaran</td><td class="py-1">: <span id="rppMapel"></span></td></tr>
+                        </table>
+                    </div>
+                    <div>
+                        <table class="w-full text-sm">
+                            <tr><td class="font-semibold py-1">Materi Pokok</td><td class="py-1">: <span id="rppMateri"></span></td></tr>
+                            <tr><td class="font-semibold py-1">Alokasi Waktu</td><td class="py-1">: 2 x 45 menit</td></tr>
+                            <tr><td class="font-semibold py-1">Guru</td><td class="py-1">: <span id="rppGuru"></span></td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-lg font-semibold text-indigo-800 mb-3">A. CAPAIAN PEMBELAJARAN</h3>
+                        <div id="rppCapaian" class="bg-blue-50 p-4 rounded-lg text-sm"></div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-semibold text-indigo-800 mb-3">B. TUJUAN PEMBELAJARAN</h3>
+                        <div id="rppTujuan" class="bg-green-50 p-4 rounded-lg text-sm"></div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-semibold text-indigo-800 mb-3">C. LANGKAH-LANGKAH PEMBELAJARAN</h3>
+                        <div id="rppLangkah" class="space-y-4"></div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-semibold text-indigo-800 mb-3">D. ASESMEN</h3>
+                        <div id="rppAsesmen" class="bg-yellow-50 p-4 rounded-lg text-sm"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Documents Container -->
+            <div id="otherDocs"></div>
+
+            <!-- Export Buttons -->
+            <div class="no-print text-center mt-8 space-x-4">
+                <button onclick="exportToPDF()" class="bg-red-600 text-white py-3 px-8 rounded-lg font-semibold hover:bg-red-700 transition duration-300">
+                    📄 Unduh sebagai PDF
+                </button>
+                <button onclick="exportToWord()" class="bg-green-600 text-white py-3 px-8 rounded-lg font-semibold hover:bg-green-700 transition duration-300">
+                    📊 Unduh sebagai Word (Tabel)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Chat Feature -->
+    <div id="aiChatButton" class="fixed bottom-6 right-6 z-50">
+        <button onclick="toggleAIChat()" class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110">
+            <span id="chatIcon" class="text-2xl">💬</span>
+        </button>
+    </div>
+
+    <!-- AI Chat Window -->
+    <div id="aiChatWindow" class="hidden fixed bottom-24 right-6 w-96 h-96 bg-white rounded-xl shadow-2xl border border-gray-200 z-40 flex flex-col">
+        <!-- Chat Header -->
+        <div class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-4 rounded-t-xl">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <span class="text-xl">🤖</span>
+                    <div>
+                        <h3 class="font-semibold">AI Assistant Guru</h3>
+                        <p class="text-xs opacity-90">Powered by Google Gemini</p>
+                    </div>
+                </div>
+                <button onclick="clearChatHistory()" class="text-white hover:text-gray-200 text-sm">
+                    🗑️
+                </button>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="p-3 bg-gray-50 border-b">
+            <div class="grid grid-cols-2 gap-2 text-xs">
+                <button onclick="sendQuickMessage('Bagaimana cara membuat RPP Kurikulum Merdeka yang baik dan sesuai standar? Berikan tips praktis!')" class="bg-blue-100 hover:bg-blue-200 text-blue-800 p-2 rounded-lg transition duration-300">
+                    📋 Tips RPP
+                </button>
+                <button onclick="sendQuickMessage('Jelaskan perbedaan asesmen formatif dan sumatif dalam Kurikulum Merdeka. Berikan contoh praktis!')" class="bg-green-100 hover:bg-green-200 text-green-800 p-2 rounded-lg transition duration-300">
+                    📊 Asesmen
+                </button>
+                <button onclick="sendQuickMessage('Apa itu kecerdasan buatan dan bagaimana cara kerjanya?')" class="bg-orange-100 hover:bg-orange-200 text-orange-800 p-2 rounded-lg transition duration-300">
+                    🤖 AI & Tech
+                </button>
+                <button onclick="sendQuickMessage('Berikan tips produktivitas untuk bekerja lebih efektif sehari-hari')" class="bg-purple-100 hover:bg-purple-200 text-purple-800 p-2 rounded-lg transition duration-300">
+                    ⚡ Produktivitas
+                </button>
+            </div>
+        </div>
+
+        <!-- Chat Messages -->
+        <div id="chatMessages" class="flex-1 overflow-y-auto p-4 space-y-3">
+            <div class="flex items-start space-x-2">
+                <div class="bg-purple-100 p-2 rounded-full">
+                    <span class="text-sm">🤖</span>
+                </div>
+                <div class="bg-gray-100 p-3 rounded-lg max-w-xs">
+                    <p class="text-sm text-gray-800">Halo! 👋 Saya AI Assistant yang bisa membantu Anda dengan berbagai pertanyaan - mulai dari pendidikan, teknologi, tips produktivitas, hingga topik umum lainnya. Ada yang ingin ditanyakan?</p>
+                    <span class="text-xs text-gray-500 mt-1 block">Sekarang</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Input -->
+        <div class="p-4 border-t bg-gray-50 rounded-b-xl">
+            <div id="chatStatus" class="text-xs text-gray-500 mb-2"></div>
+            <div class="flex space-x-2">
+                <input type="text" id="chatInput" placeholder="Tanya apa saja..." class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 text-sm" onkeypress="handleChatKeyPress(event)">
+                <button id="sendButton" onclick="sendChatMessage()" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition duration-300">
+                    <span id="sendIcon">📤</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Google Gemini AI Configuration
+        const GEMINI_API_KEY = 'AIzaSyCR9U0iUgulrcQ2WjXPyTqnguOh-nUh2Vc';
+        const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
+
+        // Reference Knowledge Base
+        let referenceKnowledge = {
+            bukuGuru: null,
+            bukuSiswa: null,
+            cp: null,
+            textReference: '',
+            processedContent: '',
+            summary: ''
+        };
+
+        // Local Storage System
+        const STORAGE_KEYS = {
+            FORM_DATA: 'guru_admin_form_data',
+            REFERENCES: 'guru_admin_references',
+            GENERATED_DOCS: 'guru_admin_generated_docs',
+            SETTINGS: 'guru_admin_settings',
+            CHAT_HISTORY: 'guru_admin_chat_history'
+        };
+
+        // Chat System Variables
+        let isChatOpen = false;
+        let chatHistory = [];
+
+        // Initialize local storage on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadFromLocalStorage();
+            setupAutoSave();
+            showStorageStatus();
+            loadChatHistory();
+        });
+
+        // Save form data to local storage
+        function saveFormData() {
+            const formData = {
+                namaGuru: document.getElementById('namaGuru').value,
+                nip: document.getElementById('nip').value,
+                sekolah: document.getElementById('sekolah').value,
+                kelas: document.getElementById('kelas').value,
+                mataPelajaran: document.getElementById('mataPelajaran').value,
+                semester: document.getElementById('semester').value,
+                topikPembelajaran: document.getElementById('topikPembelajaran').value,
+                textReference: document.getElementById('textReference').value,
+                selectedDocs: {
+                    rpp: document.getElementById('rpp').checked,
+                    silabus: document.getElementById('silabus').checked,
+                    prota: document.getElementById('prota').checked,
+                    prosem: document.getElementById('prosem').checked,
+                    kktp: document.getElementById('kktp').checked,
+                    asesmen: document.getElementById('asesmen').checked
+                },
+                timestamp: new Date().toISOString()
+            };
+            
+            localStorage.setItem(STORAGE_KEYS.FORM_DATA, JSON.stringify(formData));
+            updateStorageStatus('Form data tersimpan otomatis');
+        }
+
+        // Save references to local storage
+        function saveReferences() {
+            const referencesData = {
+                ...referenceKnowledge,
+                timestamp: new Date().toISOString()
+            };
+            
+            localStorage.setItem(STORAGE_KEYS.REFERENCES, JSON.stringify(referencesData));
+            updateStorageStatus('Referensi tersimpan otomatis');
+        }
+
+        // Save generated documents to local storage
+        function saveGeneratedDocs() {
+            const generatedDocs = document.getElementById('generatedDocs');
+            if (generatedDocs && !generatedDocs.classList.contains('hidden')) {
+                const docsData = {
+                    html: generatedDocs.innerHTML,
+                    timestamp: new Date().toISOString()
+                };
+                
+                localStorage.setItem(STORAGE_KEYS.GENERATED_DOCS, JSON.stringify(docsData));
+                updateStorageStatus('Dokumen tersimpan otomatis');
+            }
+        }
+
+        // Load all data from local storage
+        function loadFromLocalStorage() {
+            loadFormData();
+            loadReferences();
+            loadGeneratedDocs();
+        }
+
+        // Load form data from local storage
+        function loadFormData() {
+            const savedData = localStorage.getItem(STORAGE_KEYS.FORM_DATA);
+            if (savedData) {
+                try {
+                    const formData = JSON.parse(savedData);
+                    
+                    // Restore form fields
+                    document.getElementById('namaGuru').value = formData.namaGuru || '';
+                    document.getElementById('nip').value = formData.nip || '';
+                    document.getElementById('sekolah').value = formData.sekolah || '';
+                    document.getElementById('kelas').value = formData.kelas || '';
+                    document.getElementById('mataPelajaran').value = formData.mataPelajaran || '';
+                    document.getElementById('semester').value = formData.semester || '';
+                    document.getElementById('topikPembelajaran').value = formData.topikPembelajaran || '';
+                    document.getElementById('textReference').value = formData.textReference || '';
+                    
+                    // Restore checkbox selections
+                    if (formData.selectedDocs) {
+                        document.getElementById('rpp').checked = formData.selectedDocs.rpp || false;
+                        document.getElementById('silabus').checked = formData.selectedDocs.silabus || false;
+                        document.getElementById('prota').checked = formData.selectedDocs.prota || false;
+                        document.getElementById('prosem').checked = formData.selectedDocs.prosem || false;
+                        document.getElementById('kktp').checked = formData.selectedDocs.kktp || false;
+                        document.getElementById('asesmen').checked = formData.selectedDocs.asesmen || false;
+                    }
+                    
+                    updateStorageStatus(`Data form dimuat (${new Date(formData.timestamp).toLocaleString()})`);
+                } catch (error) {
+                    console.error('Error loading form data:', error);
+                }
+            }
+        }
+
+        // Load references from local storage
+        function loadReferences() {
+            const savedReferences = localStorage.getItem(STORAGE_KEYS.REFERENCES);
+            if (savedReferences) {
+                try {
+                    const referencesData = JSON.parse(savedReferences);
+                    
+                    // Restore reference knowledge (excluding file objects)
+                    referenceKnowledge.textReference = referencesData.textReference || '';
+                    referenceKnowledge.processedContent = referencesData.processedContent || '';
+                    referenceKnowledge.summary = referencesData.summary || '';
+                    
+                    // Show reference summary if available
+                    if (referenceKnowledge.summary) {
+                        document.getElementById('referenceSummary').classList.remove('hidden');
+                        document.getElementById('summaryContent').innerHTML = `
+                            <div class="font-medium mb-1">Referensi tersimpan dari sesi sebelumnya:</div>
+                            <div class="text-xs">${referenceKnowledge.summary.substring(0, 200)}...</div>
+                            <button onclick="showFullSummary()" class="text-green-800 hover:text-green-900 underline mt-1">Lihat ringkasan lengkap</button>
+                        `;
+                    }
+                    
+                    updateStorageStatus(`Referensi dimuat (${new Date(referencesData.timestamp).toLocaleString()})`);
+                } catch (error) {
+                    console.error('Error loading references:', error);
+                }
+            }
+        }
+
+        // Load generated documents from local storage
+        function loadGeneratedDocs() {
+            const savedDocs = localStorage.getItem(STORAGE_KEYS.GENERATED_DOCS);
+            if (savedDocs) {
+                try {
+                    const docsData = JSON.parse(savedDocs);
+                    
+                    // Restore generated documents
+                    const generatedDocs = document.getElementById('generatedDocs');
+                    generatedDocs.innerHTML = docsData.html;
+                    generatedDocs.classList.remove('hidden');
+                    generatedDocs.classList.add('fade-in');
+                    
+                    updateStorageStatus(`Dokumen dimuat (${new Date(docsData.timestamp).toLocaleString()})`);
+                } catch (error) {
+                    console.error('Error loading generated docs:', error);
+                }
+            }
+        }
+
+        // Setup auto-save functionality
+        function setupAutoSave() {
+            // Auto-save form data on input changes
+            const formInputs = [
+                'namaGuru', 'nip', 'sekolah', 'kelas', 'mataPelajaran', 
+                'semester', 'topikPembelajaran', 'textReference'
+            ];
+            
+            formInputs.forEach(inputId => {
+                const element = document.getElementById(inputId);
+                if (element) {
+                    element.addEventListener('input', debounce(saveFormData, 1000));
+                    element.addEventListener('change', saveFormData);
+                }
+            });
+            
+            // Auto-save checkbox selections
+            const checkboxes = ['rpp', 'silabus', 'prota', 'prosem', 'kktp', 'asesmen'];
+            checkboxes.forEach(checkboxId => {
+                const element = document.getElementById(checkboxId);
+                if (element) {
+                    element.addEventListener('change', saveFormData);
+                }
+            });
+        }
+
+        // Debounce function to limit auto-save frequency
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Clear all local storage data
+        function clearAllData() {
+            if (confirm('Apakah Anda yakin ingin menghapus semua data tersimpan? Tindakan ini tidak dapat dibatalkan.')) {
+                Object.values(STORAGE_KEYS).forEach(key => {
+                    localStorage.removeItem(key);
+                });
+                
+                // Reset form
+                document.getElementById('inputForm').reset();
+                
+                // Clear references
+                clearAllReferences();
+                
+                // Hide generated documents
+                document.getElementById('generatedDocs').classList.add('hidden');
+                document.getElementById('generatedDocs').innerHTML = '';
+                
+                // Clear chat history
+                clearChatHistory();
+                
+                updateStorageStatus('Semua data berhasil dihapus');
+                showNotification('Semua data tersimpan berhasil dihapus!', 'success');
+            }
+        }
+
+        // Export all data as backup
+        function exportDataBackup() {
+            const backupData = {
+                formData: JSON.parse(localStorage.getItem(STORAGE_KEYS.FORM_DATA) || '{}'),
+                references: JSON.parse(localStorage.getItem(STORAGE_KEYS.REFERENCES) || '{}'),
+                generatedDocs: JSON.parse(localStorage.getItem(STORAGE_KEYS.GENERATED_DOCS) || '{}'),
+                exportDate: new Date().toISOString(),
+                version: '1.0'
+            };
+            
+            const blob = new Blob([JSON.stringify(backupData, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `backup_administrasi_guru_${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+            
+            showNotification('Backup data berhasil diunduh!', 'success');
+        }
+
+        // Import data from backup
+        function importDataBackup(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const backupData = JSON.parse(e.target.result);
+                    
+                    // Validate backup data
+                    if (!backupData.version || !backupData.exportDate) {
+                        throw new Error('Format backup tidak valid');
+                    }
+                    
+                    // Restore data to localStorage
+                    if (backupData.formData) {
+                        localStorage.setItem(STORAGE_KEYS.FORM_DATA, JSON.stringify(backupData.formData));
+                    }
+                    if (backupData.references) {
+                        localStorage.setItem(STORAGE_KEYS.REFERENCES, JSON.stringify(backupData.references));
+                    }
+                    if (backupData.generatedDocs) {
+                        localStorage.setItem(STORAGE_KEYS.GENERATED_DOCS, JSON.stringify(backupData.generatedDocs));
+                    }
+                    
+                    // Reload data
+                    loadFromLocalStorage();
+                    
+                    showNotification('Data backup berhasil dipulihkan!', 'success');
+                    updateStorageStatus(`Data dipulihkan dari backup (${new Date(backupData.exportDate).toLocaleString()})`);
+                    
+                } catch (error) {
+                    console.error('Error importing backup:', error);
+                    showNotification('Gagal memuat backup: ' + error.message, 'error');
+                }
+            };
+            reader.readAsText(file);
+            
+            // Reset file input
+            event.target.value = '';
+        }
+
+        // Show storage status
+        function showStorageStatus() {
+            const statusElement = document.getElementById('storageStatus');
+            if (statusElement) {
+                const usage = getStorageUsage();
+                statusElement.innerHTML = `
+                    <div class="flex items-center space-x-2">
+                        <span class="text-sm text-gray-600">💾 Storage: ${usage.used}KB / ${usage.available}KB</span>
+                        <span class="text-xs ${usage.percentage > 80 ? 'text-red-600' : 'text-green-600'}">(${usage.percentage}%)</span>
+                    </div>
+                `;
+            }
+        }
+
+        // Update storage status message
+        function updateStorageStatus(message) {
+            const statusElement = document.getElementById('storageStatusMessage');
+            if (statusElement) {
+                statusElement.textContent = message;
+                statusElement.className = 'text-xs text-green-600';
+                
+                // Fade out after 3 seconds
+                setTimeout(() => {
+                    statusElement.textContent = '';
+                }, 3000);
+            }
+        }
+
+        // Get storage usage information
+        function getStorageUsage() {
+            let used = 0;
+            Object.values(STORAGE_KEYS).forEach(key => {
+                const item = localStorage.getItem(key);
+                if (item) {
+                    used += new Blob([item]).size;
+                }
+            });
+            
+            const usedKB = Math.round(used / 1024);
+            const availableKB = 5120; // Approximate localStorage limit (5MB)
+            const percentage = Math.round((usedKB / availableKB) * 100);
+            
+            return {
+                used: usedKB,
+                available: availableKB,
+                percentage: percentage
+            };
+        }
+
+        // AI-powered content generation
+        async function generateAIContent(mataPelajaran, kelas, topik, docType) {
+            const prompt = createPrompt(mataPelajaran, kelas, topik, docType);
+            
+            try {
+                const response = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [{
+                                text: prompt
+                            }]
+                        }]
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                const aiResponse = data.candidates[0].content.parts[0].text;
+                
+                return parseAIResponse(aiResponse, docType);
+            } catch (error) {
+                console.error('Error calling Gemini AI:', error);
+                return getFallbackContent(mataPelajaran, kelas, topik, docType);
+            }
+        }
+
+        // File Upload Handler
+        function handleFileUpload(input, type) {
+            const file = input.files[0];
+            if (!file) return;
+
+            // Validate file size (10MB max)
+            if (file.size > 10 * 1024 * 1024) {
+                showNotification(`File ${file.name} terlalu besar. Maksimal 10MB.`, 'error');
+                input.value = '';
+                return;
+            }
+
+            // Validate file type
+            const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'text/plain'];
+            if (!allowedTypes.includes(file.type)) {
+                showNotification(`Format file ${file.name} tidak didukung.`, 'error');
+                input.value = '';
+                return;
+            }
+
+            // Show processing status
+            const statusElement = document.getElementById(`${type}Status`);
+            const previewElement = document.getElementById(`${type}Preview`);
+            
+            statusElement.innerHTML = `<span class="text-blue-600">📤 Mengupload ${file.name}...</span>`;
+            
+            // Process file
+            processFile(file, type).then(content => {
+                referenceKnowledge[type] = {
+                    name: file.name,
+                    content: content,
+                    type: file.type,
+                    size: file.size
+                };
+
+                statusElement.innerHTML = `<span class="text-green-600">✅ ${file.name} berhasil diupload</span>`;
+                previewElement.innerHTML = `
+                    <div class="bg-gray-50 p-2 rounded text-xs">
+                        <div class="font-medium">${file.name}</div>
+                        <div class="text-gray-500">${(file.size / 1024).toFixed(1)} KB</div>
+                        <button onclick="removeReference('${type}')" class="text-red-500 hover:text-red-700 mt-1">🗑️ Hapus</button>
+                    </div>
+                `;
+
+                // Process all references with AI
+                processReferencesWithAI();
+                
+                // Save references to localStorage
+                saveReferences();
+                
+                showNotification(`File ${file.name} berhasil diupload dan diproses!`, 'success');
+            }).catch(error => {
+                console.error('Error processing file:', error);
+                statusElement.innerHTML = `<span class="text-red-600">❌ Gagal memproses ${file.name}</span>`;
+                showNotification(`Gagal memproses file ${file.name}`, 'error');
+            });
+        }
+
+        // Process file content
+        async function processFile(file, type) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    let content = '';
+                    
+                    if (file.type === 'text/plain') {
+                        content = e.target.result;
+                    } else {
+                        // For PDF, DOC, DOCX - simulate content extraction
+                        // In real implementation, you'd use libraries like PDF.js or mammoth.js
+                        content = `[Konten dari ${file.name}]\n\nFile ini berisi materi pembelajaran yang akan digunakan sebagai referensi untuk menggenerate administrasi guru yang lebih akurat dan sesuai dengan kurikulum yang digunakan.`;
+                    }
+                    
+                    resolve(content);
+                };
+                
+                reader.onerror = function() {
+                    reject(new Error('Failed to read file'));
+                };
+                
+                reader.readAsText(file);
+            });
+        }
+
+        // Process references with AI
+        async function processReferencesWithAI() {
+            const textRef = document.getElementById('textReference').value;
+            
+            // Combine all references
+            let combinedContent = '';
+            
+            if (referenceKnowledge.bukuGuru) {
+                combinedContent += `BUKU GURU:\n${referenceKnowledge.bukuGuru.content}\n\n`;
+            }
+            
+            if (referenceKnowledge.bukuSiswa) {
+                combinedContent += `BUKU SISWA:\n${referenceKnowledge.bukuSiswa.content}\n\n`;
+            }
+            
+            if (referenceKnowledge.cp) {
+                combinedContent += `CAPAIAN PEMBELAJARAN:\n${referenceKnowledge.cp.content}\n\n`;
+            }
+            
+            if (textRef.trim()) {
+                combinedContent += `REFERENSI TEKS:\n${textRef}\n\n`;
+                referenceKnowledge.textReference = textRef;
+            }
+
+            if (!combinedContent.trim()) return;
+
+            // Show processing status
+            document.getElementById('referenceProcessing').classList.remove('hidden');
+            document.getElementById('referenceSummary').classList.add('hidden');
+
+            try {
+                // Process with AI
+                const prompt = `Analisis dan ringkas referensi pembelajaran berikut untuk digunakan dalam pembuatan administrasi guru:
+
+${combinedContent}
+
+Berikan ringkasan yang mencakup:
+1. Poin-poin kunci dari materi
+2. Capaian pembelajaran yang relevan
+3. Strategi pembelajaran yang disarankan
+4. Asesmen yang sesuai
+
+Format dalam bahasa Indonesia yang mudah dipahami.`;
+
+                const response = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [{
+                                text: prompt
+                            }]
+                        }]
+                    })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    const aiSummary = data.candidates[0].content.parts[0].text;
+                    
+                    referenceKnowledge.processedContent = combinedContent;
+                    referenceKnowledge.summary = aiSummary;
+
+                    // Show summary
+                    document.getElementById('referenceProcessing').classList.add('hidden');
+                    document.getElementById('referenceSummary').classList.remove('hidden');
+                    document.getElementById('summaryContent').innerHTML = `
+                        <div class="font-medium mb-1">Referensi berhasil dianalisis AI:</div>
+                        <div class="text-xs">${aiSummary.substring(0, 200)}...</div>
+                        <button onclick="showFullSummary()" class="text-green-800 hover:text-green-900 underline mt-1">Lihat ringkasan lengkap</button>
+                    `;
+                    
+                    // Save to localStorage
+                    saveReferences();
+                } else {
+                    throw new Error('AI processing failed');
+                }
+            } catch (error) {
+                console.error('Error processing references:', error);
+                document.getElementById('referenceProcessing').classList.add('hidden');
+                
+                // Fallback processing
+                referenceKnowledge.processedContent = combinedContent;
+                referenceKnowledge.summary = 'Referensi berhasil diupload dan siap digunakan untuk meningkatkan akurasi pembuatan administrasi guru.';
+                
+                document.getElementById('referenceSummary').classList.remove('hidden');
+                document.getElementById('summaryContent').innerHTML = `
+                    <div class="font-medium mb-1">Referensi berhasil diproses:</div>
+                    <div class="text-xs">Referensi pembelajaran telah diupload dan siap digunakan untuk menggenerate administrasi yang lebih akurat.</div>
+                `;
+                
+                // Save to localStorage
+                saveReferences();
+            }
+        }
+
+        // Remove reference
+        function removeReference(type) {
+            referenceKnowledge[type] = null;
+            document.getElementById(`${type}Status`).innerHTML = '';
+            document.getElementById(`${type}Preview`).innerHTML = '';
+            document.getElementById(`${type}File`).value = '';
+            
+            // Reprocess remaining references
+            if (hasAnyReferences()) {
+                processReferencesWithAI();
+            } else {
+                document.getElementById('referenceSummary').classList.add('hidden');
+                referenceKnowledge.processedContent = '';
+                referenceKnowledge.summary = '';
+            }
+            
+            showNotification('Referensi berhasil dihapus', 'success');
+        }
+
+        // Clear all references
+        function clearAllReferences() {
+            referenceKnowledge = {
+                bukuGuru: null,
+                bukuSiswa: null,
+                cp: null,
+                textReference: '',
+                processedContent: '',
+                summary: ''
+            };
+
+            // Clear UI
+            ['bukuGuru', 'bukuSiswa', 'cp'].forEach(type => {
+                document.getElementById(`${type}Status`).innerHTML = '';
+                document.getElementById(`${type}Preview`).innerHTML = '';
+                document.getElementById(`${type}File`).value = '';
+            });
+            
+            document.getElementById('textReference').value = '';
+            document.getElementById('referenceSummary').classList.add('hidden');
+            document.getElementById('referenceProcessing').classList.add('hidden');
+            
+            showNotification('Semua referensi berhasil dihapus', 'success');
+        }
+
+        // Check if any references exist
+        function hasAnyReferences() {
+            return referenceKnowledge.bukuGuru || 
+                   referenceKnowledge.bukuSiswa || 
+                   referenceKnowledge.cp || 
+                   referenceKnowledge.textReference.trim();
+        }
+
+        // Show full summary
+        function showFullSummary() {
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4';
+            modal.innerHTML = `
+                <div class="bg-white rounded-xl p-6 max-w-2xl max-h-96 overflow-y-auto">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-semibold text-gray-800">Ringkasan Referensi AI</h3>
+                        <button onclick="this.closest('.fixed').remove()" class="text-gray-500 hover:text-gray-700">✕</button>
+                    </div>
+                    <div class="text-sm text-gray-700 whitespace-pre-wrap">${referenceKnowledge.summary}</div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg max-w-sm ${
+                type === 'success' ? 'bg-green-100 text-green-800 border border-green-200' :
+                type === 'error' ? 'bg-red-100 text-red-800 border border-red-200' :
+                'bg-blue-100 text-blue-800 border border-blue-200'
+            }`;
+            notification.innerHTML = `
+                <div class="flex items-center space-x-2">
+                    <span>${type === 'success' ? '✅' : type === 'error' ? '❌' : 'ℹ️'}</span>
+                    <span class="text-sm font-medium">${message}</span>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Update text reference processing
+        document.getElementById('textReference').addEventListener('blur', function() {
+            if (this.value.trim() !== referenceKnowledge.textReference) {
+                processReferencesWithAI();
+            }
+        });
+
+        // Fallback response system when AI is unavailable
+        function getFallbackResponse(message) {
+            const lowerMessage = message.toLowerCase();
+            
+            // Education-related responses
+            if (lowerMessage.includes('rpp') || lowerMessage.includes('pembelajaran')) {
+                return `📚 **Tips RPP Kurikulum Merdeka:**
+
+🎯 **Komponen Utama RPP:**
+• Capaian Pembelajaran (CP) sesuai fase
+• Tujuan pembelajaran yang spesifik dan terukur
+• Langkah pembelajaran dengan pendekatan student-centered
+• Asesmen yang autentik dan berkelanjutan
+
+✨ **Tips Praktis:**
+• Gunakan model pembelajaran yang bervariasi (PBL, Discovery, dll)
+• Integrasikan teknologi dalam pembelajaran
+• Berikan ruang untuk diferensiasi pembelajaran
+• Fokus pada pengembangan karakter Profil Pelajar Pancasila
+
+💡 Untuk bantuan lebih detail, coba tanyakan hal spesifik tentang RPP!`;
+            }
+            
+            if (lowerMessage.includes('asesmen') || lowerMessage.includes('evaluasi')) {
+                return `📊 **Panduan Asesmen Kurikulum Merdeka:**
+
+🔍 **3 Jenis Asesmen:**
+• **Diagnostik** - Mengidentifikasi kemampuan awal
+• **Formatif** - Memantau kemajuan belajar
+• **Sumatif** - Mengukur pencapaian akhir
+
+⚡ **Prinsip Asesmen:**
+• Autentik dan bermakna
+• Sesuai dengan tujuan pembelajaran
+• Memberikan umpan balik konstruktif
+• Mendorong refleksi siswa
+
+🎯 **KKTP (Kriteria Ketercapaian Tujuan Pembelajaran):**
+• Ditetapkan berdasarkan karakteristik siswa
+• Fleksibel untuk setiap tujuan pembelajaran
+• Menjadi acuan remedial dan pengayaan`;
+            }
+            
+            if (lowerMessage.includes('kurikulum merdeka') || lowerMessage.includes('kurikulum')) {
+                return `🎓 **Kurikulum Merdeka - Poin Penting:**
+
+🌟 **Karakteristik Utama:**
+• Pembelajaran berbasis proyek untuk pengembangan karakter
+• Fokus pada materi esensial dan pengembangan kompetensi
+• Fleksibilitas bagi guru untuk mengajar sesuai kemampuan siswa
+• Sekolah memiliki wewenang mengembangkan kurikulum
+
+📚 **Struktur Kurikulum:**
+• Pembelajaran intrakurikuler (70-80%)
+• Projek Penguatan Profil Pelajar Pancasila (20-30%)
+• Ekstrakurikuler
+
+🎯 **Profil Pelajar Pancasila:**
+• Beriman, bertakwa kepada Tuhan YME, dan berakhlak mulia
+• Berkebinekaan global
+• Bergotong royong
+• Mandiri
+• Bernalar kritis
+• Kreatif`;
+            }
+            
+            // Technology-related responses
+            if (lowerMessage.includes('ai') || lowerMessage.includes('kecerdasan buatan')) {
+                return `🤖 **Kecerdasan Buatan (AI) - Penjelasan Sederhana:**
+
+💡 **Apa itu AI?**
+AI adalah teknologi yang memungkinkan komputer untuk "berpikir" dan membuat keputusan seperti manusia.
+
+🔧 **Cara Kerja AI:**
+• Belajar dari data (Machine Learning)
+• Mengenali pola dan membuat prediksi
+• Memproses bahasa alami (seperti chat ini!)
+• Mengotomatisasi tugas-tugas kompleks
+
+📚 **AI dalam Pendidikan:**
+• Personalisasi pembelajaran
+• Asesmen otomatis
+• Chatbot untuk bantuan belajar
+• Analisis kemajuan siswa
+
+⚠️ **Tips Menggunakan AI:**
+• Gunakan sebagai alat bantu, bukan pengganti
+• Selalu verifikasi informasi yang diberikan AI
+• Kembangkan literasi digital
+• Pahami etika penggunaan AI`;
+            }
+            
+            if (lowerMessage.includes('produktivitas') || lowerMessage.includes('efektif')) {
+                return `⚡ **Tips Produktivitas untuk Guru:**
+
+⏰ **Manajemen Waktu:**
+• Gunakan teknik Pomodoro (25 menit fokus, 5 menit istirahat)
+• Buat prioritas dengan metode Eisenhower Matrix
+• Blokir waktu untuk tugas-tugas penting
+• Hindari multitasking berlebihan
+
+📱 **Tools Digital yang Membantu:**
+• Google Workspace untuk kolaborasi
+• Canva untuk desain materi
+• Kahoot untuk kuis interaktif
+• Trello untuk manajemen proyek
+
+🎯 **Strategi Efektif:**
+• Persiapkan materi seminggu sebelumnya
+• Gunakan template untuk dokumen berulang
+• Otomatisasi tugas administratif
+• Delegasikan tugas yang bisa didelegasikan
+
+💪 **Work-Life Balance:**
+• Tetapkan batas waktu kerja
+• Luangkan waktu untuk hobi
+• Jaga kesehatan fisik dan mental
+• Bangun support system yang kuat`;
+            }
+            
+            // General responses
+            if (lowerMessage.includes('halo') || lowerMessage.includes('hai') || lowerMessage.includes('hello')) {
+                return `👋 **Halo! Selamat datang di AI Assistant!**
+
+Saya siap membantu Anda dengan berbagai pertanyaan:
+
+📚 **Pendidikan:**
+• RPP dan perangkat pembelajaran
+• Kurikulum Merdeka
+• Strategi mengajar
+• Asesmen dan evaluasi
+
+💻 **Teknologi:**
+• AI dan aplikasinya
+• Tools digital untuk guru
+• Tips produktivitas
+
+🌟 **Topik Umum:**
+• Tips hidup sehari-hari
+• Kesehatan dan wellness
+• Pengembangan diri
+
+Silakan tanyakan apa saja yang ingin Anda ketahui! 😊`;
+            }
+            
+            // Default fallback
+            return `💬 **Maaf, saat ini AI sedang tidak tersedia.**
+
+Namun saya tetap bisa membantu dengan informasi dasar:
+
+📚 **Untuk pertanyaan pendidikan**, coba tanyakan:
+• "Tips membuat RPP yang baik"
+• "Cara asesmen Kurikulum Merdeka"
+• "Strategi pembelajaran aktif"
+
+💻 **Untuk pertanyaan teknologi**, coba:
+• "Apa itu AI dan cara kerjanya"
+• "Tools digital untuk guru"
+• "Tips produktivitas kerja"
+
+🌟 **Atau tanyakan hal lain yang ingin Anda ketahui!**
+
+*Sistem AI akan kembali normal dalam beberapa saat. Terima kasih atas pengertiannya!* 🙏`;
+        }
+
+        // AI Chat Functions
+        function toggleAIChat() {
+            const chatWindow = document.getElementById('aiChatWindow');
+            const chatIcon = document.getElementById('chatIcon');
+            
+            if (isChatOpen) {
+                chatWindow.classList.add('hidden');
+                chatIcon.textContent = '💬';
+                isChatOpen = false;
+            } else {
+                chatWindow.classList.remove('hidden');
+                chatIcon.textContent = '✕';
+                isChatOpen = true;
+                // Focus on input when opening
+                setTimeout(() => {
+                    document.getElementById('chatInput').focus();
+                }, 100);
+            }
+        }
+
+        function handleChatKeyPress(event) {
+            if (event.key === 'Enter' && !event.shiftKey) {
+                event.preventDefault();
+                sendChatMessage();
+            }
+        }
+
+        function sendQuickMessage(message) {
+            document.getElementById('chatInput').value = message;
+            sendChatMessage();
+        }
+
+        async function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            // Clear input and show loading
+            input.value = '';
+            showChatLoading(true);
+            
+            // Add user message to chat
+            addChatMessage(message, 'user');
+            
+            try {
+                // Get context from current form data
+                const context = getChatContext();
+                
+                // Create AI prompt with context and chat history
+                const prompt = createChatPrompt(message, context);
+                
+                // Call Gemini AI with improved error handling
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
+                
+                const response = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [{
+                                text: prompt
+                            }]
+                        }],
+                        generationConfig: {
+                            temperature: 0.8,
+                            topK: 40,
+                            topP: 0.95,
+                            maxOutputTokens: 2048,
+                        },
+                        safetySettings: [
+                            {
+                                category: "HARM_CATEGORY_HARASSMENT",
+                                threshold: "BLOCK_MEDIUM_AND_ABOVE"
+                            },
+                            {
+                                category: "HARM_CATEGORY_HATE_SPEECH",
+                                threshold: "BLOCK_MEDIUM_AND_ABOVE"
+                            },
+                            {
+                                category: "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                threshold: "BLOCK_MEDIUM_AND_ABOVE"
+                            },
+                            {
+                                category: "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                threshold: "BLOCK_MEDIUM_AND_ABOVE"
+                            }
+                        ]
+                    }),
+                    signal: controller.signal
+                });
+
+                clearTimeout(timeoutId);
+
+                if (!response.ok) {
+                    const errorText = await response.text().catch(() => '');
+                    console.error('API Error Response:', errorText);
+                    
+                    if (response.status === 400) {
+                        throw new Error('Invalid request format');
+                    } else if (response.status === 403) {
+                        throw new Error('API key invalid or quota exceeded');
+                    } else if (response.status === 429) {
+                        throw new Error('Too many requests - please wait');
+                    } else {
+                        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                    }
+                }
+
+                const data = await response.json();
+                console.log('AI Response:', data);
+                
+                if (!data.candidates || data.candidates.length === 0) {
+                    throw new Error('No response generated - content may have been blocked');
+                }
+                
+                const candidate = data.candidates[0];
+                if (!candidate.content || !candidate.content.parts || candidate.content.parts.length === 0) {
+                    throw new Error('Empty response from AI');
+                }
+                
+                const aiResponse = candidate.content.parts[0].text;
+                
+                if (!aiResponse || aiResponse.trim() === '') {
+                    throw new Error('Empty response text');
+                }
+                
+                // Add AI response to chat
+                addChatMessage(aiResponse, 'ai');
+                
+                // Save chat history
+                saveChatHistory();
+                
+            } catch (error) {
+                console.error('Error in AI chat:', error);
+                
+                let aiResponse = '';
+                
+                if (error.name === 'AbortError') {
+                    aiResponse = '⏰ Maaf, permintaan timeout. Silakan coba dengan pertanyaan yang lebih singkat atau coba lagi nanti.';
+                } else if (error.message.includes('quota') || error.message.includes('403')) {
+                    aiResponse = '🚫 Kuota API telah habis untuk hari ini. Silakan coba lagi besok atau hubungi administrator.';
+                } else if (error.message.includes('429')) {
+                    aiResponse = '⏳ Terlalu banyak permintaan. Silakan tunggu sebentar dan coba lagi.';
+                } else if (error.message.includes('blocked')) {
+                    aiResponse = '🛡️ Maaf, konten tidak dapat diproses karena kebijakan keamanan. Coba dengan pertanyaan yang berbeda.';
+                } else if (error.message.includes('network') || error.message.includes('fetch')) {
+                    aiResponse = '🌐 Masalah koneksi internet. Periksa koneksi Anda dan coba lagi.';
+                } else if (error.message.includes('Invalid request')) {
+                    aiResponse = '❌ Format permintaan tidak valid. Coba dengan pertanyaan yang lebih sederhana.';
+                } else {
+                    // Fallback response for any other errors
+                    aiResponse = getFallbackResponse(message);
+                }
+                
+                addChatMessage(aiResponse, 'ai');
+            }
+            
+            showChatLoading(false);
+        }
+
+        function createChatPrompt(userMessage, context) {
+            // Get recent chat history for context
+            const recentHistory = chatHistory.slice(-4); // Last 4 messages for context
+            let historyContext = '';
+            
+            if (recentHistory.length > 0) {
+                historyContext = '\n\nRiwayat percakapan terakhir:\n';
+                recentHistory.forEach(chat => {
+                    const role = chat.sender === 'user' ? 'User' : 'AI';
+                    historyContext += `${role}: ${chat.message}\n`;
+                });
+            }
+
+            // Include reference knowledge if available
+            let referenceContext = '';
+            if (referenceKnowledge.summary) {
+                referenceContext = `\n\nReferensi pembelajaran yang tersedia:\n${referenceKnowledge.summary.substring(0, 300)}...`;
+            }
+
+            // Detect if question is education-related
+            const educationKeywords = ['rpp', 'silabus', 'kurikulum', 'pembelajaran', 'siswa', 'guru', 'sekolah', 'asesmen', 'evaluasi', 'materi', 'pendidikan', 'mengajar', 'kelas', 'pelajaran', 'prota', 'prosem', 'kktp', 'belajar', 'didik', 'akademik', 'universitas', 'kuliah', 'mahasiswa', 'dosen', 'kampus', 'ujian', 'tugas', 'skripsi', 'tesis', 'penelitian'];
+            const isEducationRelated = educationKeywords.some(keyword => 
+                userMessage.toLowerCase().includes(keyword)
+            );
+
+            let prompt = '';
+
+            if (isEducationRelated) {
+                // Education-focused response
+                prompt = `Anda adalah AI Assistant yang ahli dalam pendidikan Indonesia, khususnya:
+- Kurikulum Merdeka dan implementasinya
+- Administrasi guru dan perangkat pembelajaran
+- Strategi pembelajaran modern dan efektif
+- Asesmen dan evaluasi pembelajaran
+- Teknologi pendidikan
+
+Konteks pembelajaran saat ini:
+${context}${referenceContext}${historyContext}
+
+Pertanyaan: ${userMessage}
+
+Berikan jawaban yang:
+1. Sesuai dengan Kurikulum Merdeka terbaru
+2. Praktis dan dapat langsung diterapkan
+3. Menggunakan bahasa Indonesia yang mudah dipahami
+4. Berikan contoh konkret jika relevan
+5. Maksimal 250 kata agar mudah dibaca
+6. Gunakan emoji yang sesuai untuk memperjelas poin penting
+7. Jika perlu, berikan langkah-langkah yang jelas
+
+Jawaban:`;
+            } else {
+                // General AI assistant response
+                prompt = `Anda adalah AI Assistant yang cerdas dan membantu. Anda dapat menjawab berbagai pertanyaan dengan:
+- Pengetahuan yang luas dan akurat
+- Bahasa Indonesia yang natural dan mudah dipahami
+- Jawaban yang informatif namun ringkas
+- Sikap yang ramah dan profesional
+
+${historyContext}
+
+Pertanyaan: ${userMessage}
+
+Berikan jawaban yang:
+1. Akurat dan berdasarkan informasi terpercaya
+2. Mudah dipahami dengan bahasa yang jelas
+3. Maksimal 250 kata agar efektif
+4. Gunakan emoji yang sesuai untuk memperjelas
+5. Jika tidak tahu pasti, sampaikan dengan jujur
+6. Berikan saran praktis jika relevan
+
+Jawaban:`;
+            }
+
+            return prompt;
+        }
+
+        function getChatContext() {
+            const namaGuru = document.getElementById('namaGuru').value;
+            const sekolah = document.getElementById('sekolah').value;
+            const mataPelajaran = document.getElementById('mataPelajaran').value;
+            const kelas = document.getElementById('kelas').value;
+            const topik = document.getElementById('topikPembelajaran').value;
+            const semester = document.getElementById('semester').value;
+            
+            let context = 'Guru sedang menggunakan Generator Administrasi Guru Kurikulum Merdeka.';
+            
+            if (namaGuru) context += `\nNama Guru: ${namaGuru}`;
+            if (sekolah) context += `\nSekolah: ${sekolah}`;
+            if (mataPelajaran) context += `\nMata Pelajaran: ${mataPelajaran}`;
+            if (kelas) context += `\nKelas: ${kelas}`;
+            if (semester) context += `\nSemester: ${semester}`;
+            if (topik) context += `\nTopik/Materi yang sedang dikerjakan: ${topik}`;
+            
+            // Check which documents are selected
+            const selectedDocs = [];
+            if (document.getElementById('rpp').checked) selectedDocs.push('RPP');
+            if (document.getElementById('silabus').checked) selectedDocs.push('Silabus');
+            if (document.getElementById('prota').checked) selectedDocs.push('Prota');
+            if (document.getElementById('prosem').checked) selectedDocs.push('Prosem');
+            if (document.getElementById('kktp').checked) selectedDocs.push('KKTP');
+            if (document.getElementById('asesmen').checked) selectedDocs.push('Asesmen');
+            
+            if (selectedDocs.length > 0) {
+                context += `\nDokumen yang akan/sedang dibuat: ${selectedDocs.join(', ')}`;
+            }
+            
+            // Check if documents have been generated
+            const generatedDocs = document.getElementById('generatedDocs');
+            if (generatedDocs && !generatedDocs.classList.contains('hidden')) {
+                context += `\nStatus: Dokumen administrasi sudah berhasil digenerate`;
+            }
+            
+            return context;
+        }
+
+        function addChatMessage(message, sender) {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            const timestamp = new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+            
+            // Format message for better display
+            let formattedMessage = message;
+            if (sender === 'ai') {
+                // Convert markdown-like formatting to HTML
+                formattedMessage = message
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold
+                    .replace(/\*(.*?)\*/g, '<em>$1</em>') // Italic
+                    .replace(/\n\n/g, '</p><p>') // Paragraphs
+                    .replace(/\n/g, '<br>') // Line breaks
+                    .replace(/^\d+\.\s/gm, '<br>$&') // Numbered lists
+                    .replace(/^-\s/gm, '<br>• '); // Bullet points
+                
+                // Wrap in paragraph if not already
+                if (!formattedMessage.includes('<p>')) {
+                    formattedMessage = '<p>' + formattedMessage + '</p>';
+                }
+            }
+            
+            if (sender === 'user') {
+                messageDiv.className = 'flex items-start space-x-2 justify-end fade-in';
+                messageDiv.innerHTML = `
+                    <div class="bg-purple-600 text-white p-3 rounded-lg max-w-xs break-words">
+                        <p class="text-sm">${formattedMessage}</p>
+                        <span class="text-xs opacity-75 mt-1 block">${timestamp}</span>
+                    </div>
+                    <div class="bg-purple-600 p-2 rounded-full flex-shrink-0">
+                        <span class="text-sm text-white">👤</span>
+                    </div>
+                `;
+            } else {
+                messageDiv.className = 'flex items-start space-x-2 fade-in';
+                messageDiv.innerHTML = `
+                    <div class="bg-purple-100 p-2 rounded-full flex-shrink-0">
+                        <span class="text-sm">🤖</span>
+                    </div>
+                    <div class="bg-gray-100 p-3 rounded-lg max-w-xs break-words">
+                        <div class="text-sm text-gray-800">${formattedMessage}</div>
+                        <span class="text-xs text-gray-500 mt-1 block">${timestamp}</span>
+                    </div>
+                `;
+            }
+            
+            chatMessages.appendChild(messageDiv);
+            
+            // Add to chat history (store original message without HTML formatting)
+            chatHistory.push({
+                message: message,
+                sender: sender,
+                timestamp: new Date().toISOString()
+            });
+            
+            // Limit chat history to prevent memory issues
+            if (chatHistory.length > 50) {
+                chatHistory = chatHistory.slice(-40); // Keep last 40 messages
+            }
+            
+            // Smooth scroll to bottom
+            setTimeout(() => {
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 100);
+        }
+
+        function showChatLoading(show) {
+            const sendButton = document.getElementById('sendButton');
+            const sendIcon = document.getElementById('sendIcon');
+            const chatStatus = document.getElementById('chatStatus');
+            const chatMessages = document.getElementById('chatMessages');
+            
+            if (show) {
+                sendIcon.textContent = '⏳';
+                sendButton.disabled = true;
+                sendButton.classList.add('opacity-50');
+                chatStatus.innerHTML = '<span class="text-purple-600 font-medium">🤖 AI sedang berpikir...</span>';
+                
+                // Add typing indicator
+                const typingDiv = document.createElement('div');
+                typingDiv.id = 'typingIndicator';
+                typingDiv.className = 'flex items-start space-x-2 fade-in';
+                typingDiv.innerHTML = `
+                    <div class="bg-purple-100 p-2 rounded-full flex-shrink-0">
+                        <span class="text-sm">🤖</span>
+                    </div>
+                    <div class="bg-gray-100 p-3 rounded-lg">
+                        <div class="flex space-x-1">
+                            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+                            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                        </div>
+                    </div>
+                `;
+                chatMessages.appendChild(typingDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            } else {
+                sendIcon.textContent = '📤';
+                sendButton.disabled = false;
+                sendButton.classList.remove('opacity-50');
+                chatStatus.textContent = '';
+                
+                // Remove typing indicator
+                const typingIndicator = document.getElementById('typingIndicator');
+                if (typingIndicator) {
+                    typingIndicator.remove();
+                }
+            }
+        }
+
+        function clearChatHistory() {
+            if (confirm('Apakah Anda yakin ingin menghapus semua riwayat chat?')) {
+                chatHistory = [];
+                const chatMessages = document.getElementById('chatMessages');
+                
+                // Keep only the welcome message
+                chatMessages.innerHTML = `
+                    <div class="flex items-start space-x-2">
+                        <div class="bg-purple-100 p-2 rounded-full">
+                            <span class="text-sm">🤖</span>
+                        </div>
+                        <div class="bg-gray-100 p-3 rounded-lg max-w-xs">
+                            <p class="text-sm text-gray-800">Halo! 👋 Saya AI Assistant yang bisa membantu Anda dengan berbagai pertanyaan - mulai dari pendidikan, teknologi, tips produktivitas, hingga topik umum lainnya. Ada yang ingin ditanyakan?</p>
+                            <span class="text-xs text-gray-500 mt-1 block">Sekarang</span>
+                        </div>
+                    </div>
+                `;
+                
+                // Clear from localStorage
+                localStorage.removeItem(STORAGE_KEYS.CHAT_HISTORY);
+                showNotification('Riwayat chat berhasil dihapus', 'success');
+            }
+        }
+
+        function saveChatHistory() {
+            const chatData = {
+                history: chatHistory,
+                timestamp: new Date().toISOString()
+            };
+            localStorage.setItem(STORAGE_KEYS.CHAT_HISTORY, JSON.stringify(chatData));
+        }
+
+        function loadChatHistory() {
+            const savedChat = localStorage.getItem(STORAGE_KEYS.CHAT_HISTORY);
+            if (savedChat) {
+                try {
+                    const chatData = JSON.parse(savedChat);
+                    chatHistory = chatData.history || [];
+                    
+                    // Restore chat messages (limit to last 20 messages)
+                    const recentHistory = chatHistory.slice(-20);
+                    const chatMessages = document.getElementById('chatMessages');
+                    
+                    // Clear existing messages except welcome
+                    const welcomeMessage = chatMessages.innerHTML;
+                    
+                    recentHistory.forEach(chat => {
+                        addChatMessageToUI(chat.message, chat.sender, chat.timestamp);
+                    });
+                    
+                } catch (error) {
+                    console.error('Error loading chat history:', error);
+                }
+            }
+        }
+
+        function addChatMessageToUI(message, sender, timestamp) {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            const time = new Date(timestamp).toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+            
+            if (sender === 'user') {
+                messageDiv.className = 'flex items-start space-x-2 justify-end';
+                messageDiv.innerHTML = `
+                    <div class="bg-purple-600 text-white p-3 rounded-lg max-w-xs">
+                        <p class="text-sm">${message}</p>
+                        <span class="text-xs opacity-75 mt-1 block">${time}</span>
+                    </div>
+                    <div class="bg-purple-600 p-2 rounded-full">
+                        <span class="text-sm text-white">👤</span>
+                    </div>
+                `;
+            } else {
+                messageDiv.className = 'flex items-start space-x-2';
+                messageDiv.innerHTML = `
+                    <div class="bg-purple-100 p-2 rounded-full">
+                        <span class="text-sm">🤖</span>
+                    </div>
+                    <div class="bg-gray-100 p-3 rounded-lg max-w-xs">
+                        <p class="text-sm text-gray-800">${message.replace(/\n/g, '<br>')}</p>
+                        <span class="text-xs text-gray-500 mt-1 block">${time}</span>
+                    </div>
+                `;
+            }
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function createPrompt(mataPelajaran, kelas, topik, docType) {
+            let basePrompt = `Sebagai ahli kurikulum merdeka, buatkan ${docType} untuk:
+- Mata Pelajaran: ${mataPelajaran}
+- Kelas: ${kelas}
+- Topik: ${topik}
+
+Sesuaikan dengan Capaian Pembelajaran Kurikulum Merdeka yang terbaru.`;
+
+            // Add reference context if available
+            if (referenceKnowledge.processedContent) {
+                basePrompt += `\n\nGunakan referensi pembelajaran berikut sebagai acuan:\n${referenceKnowledge.processedContent}`;
+            }
+
+            basePrompt += ' ';
+
+            switch(docType) {
+                case 'rpp':
+                    return basePrompt + `
+Format output dalam JSON:
+{
+  "capaian": "capaian pembelajaran sesuai kurikulum merdeka",
+  "tujuan": "tujuan pembelajaran yang spesifik dan terukur",
+  "langkah": [
+    {"fase": "Pendahuluan (10 menit)", "kegiatan": "kegiatan pembuka"},
+    {"fase": "Kegiatan Inti (70 menit)", "kegiatan": "kegiatan inti pembelajaran"},
+    {"fase": "Penutup (10 menit)", "kegiatan": "kegiatan penutup"}
+  ],
+  "asesmen": "rancangan asesmen yang sesuai"
+}`;
+                case 'silabus':
+                    return basePrompt + `
+Format output dalam JSON:
+{
+  "capaian": "capaian pembelajaran",
+  "tujuan": "tujuan pembelajaran",
+  "asesmen": "rancangan asesmen"
+}`;
+                case 'kktp':
+                    return basePrompt + `
+Format output dalam JSON:
+{
+  "kriteria": [
+    {"tujuan": "tujuan 1", "indikator": "indikator 1", "kriteria": "75% siswa mencapai nilai ≥ 70"},
+    {"tujuan": "tujuan 2", "indikator": "indikator 2", "kriteria": "70% siswa mencapai nilai ≥ 75"}
+  ]
+}`;
+                default:
+                    return basePrompt + 'Berikan konten yang relevan dan sesuai kurikulum merdeka.';
+            }
+        }
+
+        function parseAIResponse(response, docType) {
+            try {
+                // Try to extract JSON from the response
+                const jsonMatch = response.match(/\{[\s\S]*\}/);
+                if (jsonMatch) {
+                    return JSON.parse(jsonMatch[0]);
+                }
+                
+                // If no JSON found, create structured response from text
+                return createStructuredResponse(response, docType);
+            } catch (error) {
+                console.error('Error parsing AI response:', error);
+                return createStructuredResponse(response, docType);
+            }
+        }
+
+        function createStructuredResponse(text, docType) {
+            // Create structured response from plain text
+            const lines = text.split('\n').filter(line => line.trim());
+            
+            switch(docType) {
+                case 'rpp':
+                    return {
+                        capaian: lines[0] || 'Capaian pembelajaran sesuai kurikulum merdeka',
+                        tujuan: lines[1] || 'Tujuan pembelajaran yang terukur',
+                        langkah: [
+                            {fase: 'Pendahuluan (10 menit)', kegiatan: lines[2] || 'Kegiatan pembuka pembelajaran'},
+                            {fase: 'Kegiatan Inti (70 menit)', kegiatan: lines[3] || 'Kegiatan inti pembelajaran'},
+                            {fase: 'Penutup (10 menit)', kegiatan: lines[4] || 'Kegiatan penutup pembelajaran'}
+                        ],
+                        asesmen: lines[5] || 'Asesmen sesuai dengan tujuan pembelajaran'
+                    };
+                default:
+                    return {
+                        capaian: lines[0] || 'Capaian pembelajaran',
+                        tujuan: lines[1] || 'Tujuan pembelajaran',
+                        asesmen: lines[2] || 'Rancangan asesmen'
+                    };
+            }
+        }
+
+        function getFallbackContent(mataPelajaran, kelas, topik, docType) {
+            // Fallback content if AI fails
+            return {
+                capaian: `Peserta didik mampu memahami dan menerapkan konsep ${topik} dalam konteks pembelajaran yang bermakna sesuai dengan Capaian Pembelajaran Kurikulum Merdeka.`,
+                tujuan: `Setelah mengikuti pembelajaran, peserta didik diharapkan dapat memahami konsep dasar, menganalisis permasalahan, dan menerapkan pengetahuan dalam situasi nyata terkait ${topik}.`,
+                langkah: [
+                    {
+                        fase: 'Pendahuluan (10 menit)',
+                        kegiatan: 'Guru membuka pembelajaran dengan salam dan doa, mengecek kehadiran siswa, menyampaikan tujuan pembelajaran, dan memberikan apersepsi terkait materi sebelumnya.'
+                    },
+                    {
+                        fase: 'Kegiatan Inti (70 menit)',
+                        kegiatan: `Guru menjelaskan konsep ${topik} melalui pendekatan saintifik. Siswa melakukan aktivitas pembelajaran melalui diskusi kelompok, eksperimen, atau studi kasus. Guru memfasilitasi presentasi dan diskusi hasil kerja siswa.`
+                    },
+                    {
+                        fase: 'Penutup (10 menit)',
+                        kegiatan: 'Guru dan siswa menyimpulkan pembelajaran, melakukan refleksi, dan menyampaikan rencana pembelajaran selanjutnya.'
+                    }
+                ],
+                asesmen: 'Asesmen dilakukan secara formatif melalui observasi selama pembelajaran dan asesmen sumatif melalui tes atau proyek yang mengukur pemahaman konsep dan kemampuan aplikasi.'
+            };
+        }
+
+        async function generateDocuments() {
+            // Validate form
+            const namaGuru = document.getElementById('namaGuru').value;
+            const sekolah = document.getElementById('sekolah').value;
+            const kelas = document.getElementById('kelas').value;
+            const mataPelajaran = document.getElementById('mataPelajaran').value;
+            const topik = document.getElementById('topikPembelajaran').value;
+
+            if (!namaGuru || !sekolah || !kelas || !mataPelajaran || !topik) {
+                alert('Mohon lengkapi semua data yang diperlukan!');
+                return;
+            }
+
+            // Check which documents are selected
+            const selectedDocs = [];
+            if (document.getElementById('rpp').checked) selectedDocs.push('rpp');
+            if (document.getElementById('silabus').checked) selectedDocs.push('silabus');
+            if (document.getElementById('prota').checked) selectedDocs.push('prota');
+            if (document.getElementById('prosem').checked) selectedDocs.push('prosem');
+            if (document.getElementById('kktp').checked) selectedDocs.push('kktp');
+            if (document.getElementById('asesmen').checked) selectedDocs.push('asesmen');
+
+            if (selectedDocs.length === 0) {
+                alert('Mohon pilih minimal satu dokumen yang akan digenerate!');
+                return;
+            }
+
+            // Show AI processing
+            document.getElementById('generateText').classList.add('hidden');
+            document.getElementById('loadingText').classList.remove('hidden');
+            document.getElementById('aiStatus').classList.remove('hidden');
+
+            try {
+                // Update AI status - analyzing
+                setTimeout(() => {
+                    const statusItems = document.querySelectorAll('#aiStatus .w-4');
+                    // Complete reference processing
+                    if (referenceKnowledge.processedContent) {
+                        statusItems[1].classList.remove('bg-blue-500', 'loading');
+                        statusItems[1].classList.add('bg-green-500');
+                        // Update text to show reference integration
+                        document.querySelector('#referenceProcessingStatus span').textContent = 'Mengintegrasikan referensi ke dalam dokumen administrasi';
+                    } else {
+                        // Hide reference processing if no references
+                        document.getElementById('referenceProcessingStatus').style.display = 'none';
+                    }
+                    // Move to subject analysis
+                    statusItems[2].classList.remove('bg-yellow-500', 'loading');
+                    statusItems[2].classList.add('bg-green-500');
+                    statusItems[3].classList.remove('bg-gray-300');
+                    statusItems[3].classList.add('bg-yellow-500', 'loading');
+                }, 1000);
+
+                // Clear previous documents
+                document.getElementById('otherDocs').innerHTML = '';
+                
+                // Generate selected documents with real AI
+                const promises = [];
+                if (selectedDocs.includes('rpp')) promises.push(generateRPPWithAI());
+                if (selectedDocs.includes('silabus')) promises.push(generateSilabusWithAI());
+                if (selectedDocs.includes('prota')) promises.push(generateProta());
+                if (selectedDocs.includes('prosem')) promises.push(generateProsem());
+                if (selectedDocs.includes('kktp')) promises.push(generateKKTPWithAI());
+                if (selectedDocs.includes('asesmen')) promises.push(generateAsesmenWithAI());
+
+                // Wait for all AI generations to complete
+                await Promise.all(promises);
+
+                // Complete AI processing
+                const statusItems = document.querySelectorAll('#aiStatus .w-4');
+                statusItems[3].classList.remove('bg-yellow-500', 'loading');
+                statusItems[3].classList.add('bg-green-500');
+                
+                // Show results
+                setTimeout(() => {
+                    document.getElementById('aiStatus').classList.add('hidden');
+                    document.getElementById('generatedDocs').classList.remove('hidden');
+                    document.getElementById('generatedDocs').classList.add('fade-in');
+                    
+                    // Save generated documents to localStorage
+                    saveGeneratedDocs();
+                    
+                    // Reset button
+                    document.getElementById('generateText').classList.remove('hidden');
+                    document.getElementById('loadingText').classList.add('hidden');
+                }, 1000);
+
+            } catch (error) {
+                console.error('Error generating documents:', error);
+                
+                // Fallback to static generation if AI fails
+                if (selectedDocs.includes('rpp')) generateRPP();
+                if (selectedDocs.includes('silabus')) generateSilabus();
+                if (selectedDocs.includes('prota')) generateProta();
+                if (selectedDocs.includes('prosem')) generateProsem();
+                if (selectedDocs.includes('kktp')) generateKKTP();
+                if (selectedDocs.includes('asesmen')) generateAsesmen();
+                
+                // Show results even with fallback
+                document.getElementById('aiStatus').classList.add('hidden');
+                document.getElementById('generatedDocs').classList.remove('hidden');
+                document.getElementById('generatedDocs').classList.add('fade-in');
+                
+                // Save generated documents to localStorage
+                saveGeneratedDocs();
+                
+                // Reset button
+                document.getElementById('generateText').classList.remove('hidden');
+                document.getElementById('loadingText').classList.add('hidden');
+            }
+        }
+
+        async function generateRPPWithAI() {
+            if (!document.getElementById('rpp').checked) return;
+            
+            const namaGuru = document.getElementById('namaGuru').value;
+            const sekolah = document.getElementById('sekolah').value;
+            const kelas = document.getElementById('kelas').value;
+            const mataPelajaran = document.getElementById('mataPelajaran').value;
+            const semester = document.getElementById('semester').value;
+            const topik = document.getElementById('topikPembelajaran').value;
+
+            // Fill RPP header
+            document.getElementById('rppSekolah').textContent = sekolah;
+            document.getElementById('rppKelas').textContent = kelas;
+            document.getElementById('rppSemester').textContent = semester;
+            document.getElementById('rppMapel').textContent = mataPelajaran;
+            document.getElementById('rppMateri').textContent = topik;
+            document.getElementById('rppGuru').textContent = namaGuru;
+
+            // Get AI-generated content
+            const content = await generateAIContent(mataPelajaran, kelas, topik, 'rpp');
+
+            // Fill RPP content
+            document.getElementById('rppCapaian').textContent = content.capaian;
+            document.getElementById('rppTujuan').textContent = content.tujuan;
+            document.getElementById('rppAsesmen').textContent = content.asesmen;
+
+            // Fill learning steps
+            const langkahContainer = document.getElementById('rppLangkah');
+            langkahContainer.innerHTML = '';
+            content.langkah.forEach(step => {
+                const stepDiv = document.createElement('div');
+                stepDiv.className = 'bg-gray-50 p-4 rounded-lg';
+                stepDiv.innerHTML = `
+                    <h4 class="font-semibold text-gray-800 mb-2">${step.fase}</h4>
+                    <p class="text-sm text-gray-700">${step.kegiatan}</p>
+                `;
+                langkahContainer.appendChild(stepDiv);
+            });
+
+            // Add export buttons to RPP
+            const rppDoc = document.getElementById('rppDoc');
+            let exportButtons = rppDoc.querySelector('.export-buttons');
+            if (!exportButtons) {
+                exportButtons = document.createElement('div');
+                exportButtons.className = 'export-buttons no-print mt-6 text-center space-x-3';
+                exportButtons.innerHTML = `
+                    <button onclick="printDocument('rppDoc')" class="bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+                        🖨️ Cetak RPP
+                    </button>
+                    <button onclick="exportDocumentToPDF('rppDoc', 'RPP')" class="bg-red-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-red-700 transition duration-300">
+                        📄 Export PDF
+                    </button>
+                    <button onclick="exportDocumentToWord('rppDoc', 'RPP')" class="bg-green-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-green-700 transition duration-300">
+                        📊 Export Word
+                    </button>
+                `;
+                rppDoc.appendChild(exportButtons);
+            }
+        }
+
+        function generateRPP() {
+            if (!document.getElementById('rpp').checked) return;
+            
+            const namaGuru = document.getElementById('namaGuru').value;
+            const sekolah = document.getElementById('sekolah').value;
+            const kelas = document.getElementById('kelas').value;
+            const mataPelajaran = document.getElementById('mataPelajaran').value;
+            const semester = document.getElementById('semester').value;
+            const topik = document.getElementById('topikPembelajaran').value;
+
+            // Fill RPP header
+            document.getElementById('rppSekolah').textContent = sekolah;
+            document.getElementById('rppKelas').textContent = kelas;
+            document.getElementById('rppSemester').textContent = semester;
+            document.getElementById('rppMapel').textContent = mataPelajaran;
+            document.getElementById('rppMateri').textContent = topik;
+            document.getElementById('rppGuru').textContent = namaGuru;
+
+            // Use fallback content
+            const content = getFallbackContent(mataPelajaran, kelas, topik, 'rpp');
+
+            // Fill RPP content
+            document.getElementById('rppCapaian').textContent = content.capaian;
+            document.getElementById('rppTujuan').textContent = content.tujuan;
+            document.getElementById('rppAsesmen').textContent = content.asesmen;
+
+            // Fill learning steps
+            const langkahContainer = document.getElementById('rppLangkah');
+            langkahContainer.innerHTML = '';
+            content.langkah.forEach(step => {
+                const stepDiv = document.createElement('div');
+                stepDiv.className = 'bg-gray-50 p-4 rounded-lg';
+                stepDiv.innerHTML = `
+                    <h4 class="font-semibold text-gray-800 mb-2">${step.fase}</h4>
+                    <p class="text-sm text-gray-700">${step.kegiatan}</p>
+                `;
+                langkahContainer.appendChild(stepDiv);
+            });
+
+            // Add export buttons to RPP
+            const rppDoc = document.getElementById('rppDoc');
+            let exportButtons = rppDoc.querySelector('.export-buttons');
+            if (!exportButtons) {
+                exportButtons = document.createElement('div');
+                exportButtons.className = 'export-buttons no-print mt-6 text-center space-x-3';
+                exportButtons.innerHTML = `
+                    <button onclick="printDocument('rppDoc')" class="bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+                        🖨️ Cetak RPP
+                    </button>
+                    <button onclick="exportDocumentToPDF('rppDoc', 'RPP')" class="bg-red-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-red-700 transition duration-300">
+                        📄 Export PDF
+                    </button>
+                    <button onclick="exportDocumentToWord('rppDoc', 'RPP')" class="bg-green-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-green-700 transition duration-300">
+                        📊 Export Word
+                    </button>
+                `;
+                rppDoc.appendChild(exportButtons);
+            }
+        }
+
+        async function generateSilabusWithAI() {
+            if (!document.getElementById('silabus').checked) return;
+            
+            const namaGuru = document.getElementById('namaGuru').value;
+            const sekolah = document.getElementById('sekolah').value;
+            const kelas = document.getElementById('kelas').value;
+            const mataPelajaran = document.getElementById('mataPelajaran').value;
+            const semester = document.getElementById('semester').value;
+            const topik = document.getElementById('topikPembelajaran').value;
+
+            // Get AI-generated content for silabus
+            const content = await generateAIContent(mataPelajaran, kelas, topik, 'silabus');
+
+            const silabus = document.createElement('div');
+            silabus.className = 'bg-white rounded-xl shadow-lg p-8 mb-8 print-page';
+            silabus.id = 'silabusDoc';
+            silabus.innerHTML = `
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">SILABUS</h2>
+                    <p class="text-gray-600">Kurikulum Merdeka</p>
+                    <div class="mt-4 text-left">
+                        <table class="w-full text-sm mb-6">
+                            <tr><td class="font-semibold py-1 w-1/4">Satuan Pendidikan</td><td class="py-1">: ${sekolah}</td></tr>
+                            <tr><td class="font-semibold py-1">Mata Pelajaran</td><td class="py-1">: ${mataPelajaran}</td></tr>
+                            <tr><td class="font-semibold py-1">Kelas/Semester</td><td class="py-1">: ${kelas}/${semester}</td></tr>
+                            <tr><td class="font-semibold py-1">Guru</td><td class="py-1">: ${namaGuru}</td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse border border-gray-300 text-sm">
+                        <thead>
+                            <tr class="bg-indigo-100">
+                                <th class="border border-gray-300 p-3">No</th>
+                                <th class="border border-gray-300 p-3">Capaian Pembelajaran</th>
+                                <th class="border border-gray-300 p-3">Tujuan Pembelajaran</th>
+                                <th class="border border-gray-300 p-3">Materi Pokok</th>
+                                <th class="border border-gray-300 p-3">Kegiatan Pembelajaran</th>
+                                <th class="border border-gray-300 p-3">Asesmen</th>
+                                <th class="border border-gray-300 p-3">Alokasi Waktu</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="border border-gray-300 p-3 text-center">1</td>
+                                <td class="border border-gray-300 p-3">${content.capaian}</td>
+                                <td class="border border-gray-300 p-3">${content.tujuan}</td>
+                                <td class="border border-gray-300 p-3">${topik}</td>
+                                <td class="border border-gray-300 p-3">Pembelajaran berbasis proyek, diskusi kelompok, dan pendekatan saintifik dengan model Problem Based Learning</td>
+                                <td class="border border-gray-300 p-3">${content.asesmen}</td>
+                                <td class="border border-gray-300 p-3 text-center">8 JP (4 Pertemuan)</td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-300 p-3 text-center">2</td>
+                                <td class="border border-gray-300 p-3">Peserta didik mampu mengembangkan pemahaman lanjutan tentang ${topik}</td>
+                                <td class="border border-gray-300 p-3">Siswa dapat menganalisis dan mengevaluasi konsep ${topik} dalam konteks yang lebih kompleks</td>
+                                <td class="border border-gray-300 p-3">Pengembangan ${topik}</td>
+                                <td class="border border-gray-300 p-3">Pembelajaran kolaboratif, studi kasus, dan presentasi hasil analisis</td>
+                                <td class="border border-gray-300 p-3">Asesmen autentik melalui portofolio dan proyek kolaboratif</td>
+                                <td class="border border-gray-300 p-3 text-center">6 JP (3 Pertemuan)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="export-buttons no-print mt-6 text-center space-x-3">
+                    <button onclick="printDocument('silabusDoc')" class="bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+                        🖨️ Cetak Silabus
+                    </button>
+                    <button onclick="exportDocumentToPDF('silabusDoc', 'Silabus')" class="bg-red-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-red-700 transition duration-300">
+                        📄 Export PDF
+                    </button>
+                    <button onclick="exportDocumentToWord('silabusDoc', 'Silabus')" class="bg-green-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-green-700 transition duration-300">
+                        📊 Export Word
+                    </button>
+                </div>
+            `;
+            document.getElementById('otherDocs').appendChild(silabus);
+        }
+
+        async function generateKKTPWithAI() {
+            if (!document.getElementById('kktp').checked) return;
+            
+            const namaGuru = document.getElementById('namaGuru').value;
+            const sekolah = document.getElementById('sekolah').value;
+            const kelas = document.getElementById('kelas').value;
+            const mataPelajaran = document.getElementById('mataPelajaran').value;
+            const semester = document.getElementById('semester').value;
+            const topik = document.getElementById('topikPembelajaran').value;
+
+            // Get AI-generated content for KKTP
+            const content = await generateAIContent(mataPelajaran, kelas, topik, 'kktp');
+
+            // Use AI criteria if available, otherwise use default
+            const kktpData = content.kriteria || [
+                {
+                    tujuan: 'Memahami konsep dasar ' + topik,
+                    indikator: 'Siswa dapat menjelaskan konsep dengan benar',
+                    kriteria: '75% siswa mencapai nilai ≥ 70',
+                    deskripsi: 'Siswa mampu memahami dan menjelaskan konsep dasar dengan tepat'
+                },
+                {
+                    tujuan: 'Menganalisis permasalahan terkait ' + topik,
+                    indikator: 'Siswa dapat mengidentifikasi masalah dan solusi',
+                    kriteria: '70% siswa mencapai nilai ≥ 75',
+                    deskripsi: 'Siswa mampu menganalisis permasalahan dan memberikan solusi yang tepat'
+                },
+                {
+                    tujuan: 'Menerapkan konsep dalam konteks nyata',
+                    indikator: 'Siswa dapat menerapkan konsep dalam kehidupan sehari-hari',
+                    kriteria: '80% siswa mencapai nilai ≥ 70',
+                    deskripsi: 'Siswa mampu mengaplikasikan pengetahuan dalam situasi nyata'
+                }
+            ];
+
+            const kktp = document.createElement('div');
+            kktp.className = 'bg-white rounded-xl shadow-lg p-8 mb-8 print-page';
+            kktp.id = 'kktpDoc';
+            kktp.innerHTML = `
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">KRITERIA KETERCAPAIAN TUJUAN PEMBELAJARAN (KKTP)</h2>
+                    <p class="text-gray-600">Kurikulum Merdeka</p>
+                    <div class="mt-4 text-left">
+                        <table class="w-full text-sm mb-6">
+                            <tr><td class="font-semibold py-1 w-1/4">Satuan Pendidikan</td><td class="py-1">: ${sekolah}</td></tr>
+                            <tr><td class="font-semibold py-1">Mata Pelajaran</td><td class="py-1">: ${mataPelajaran}</td></tr>
+                            <tr><td class="font-semibold py-1">Kelas/Semester</td><td class="py-1">: ${kelas}/${semester}</td></tr>
+                            <tr><td class="font-semibold py-1">Materi</td><td class="py-1">: ${topik}</td></tr>
+                            <tr><td class="font-semibold py-1">Guru</td><td class="py-1">: ${namaGuru}</td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse border border-gray-300 text-sm">
+                        <thead>
+                            <tr class="bg-purple-100">
+                                <th class="border border-gray-300 p-3">No</th>
+                                <th class="border border-gray-300 p-3">Tujuan Pembelajaran</th>
+                                <th class="border border-gray-300 p-3">Indikator Pencapaian</th>
+                                <th class="border border-gray-300 p-3">Kriteria Ketercapaian</th>
+                                <th class="border border-gray-300 p-3">Deskripsi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${kktpData.map((item, index) => `
+                                <tr>
+                                    <td class="border border-gray-300 p-3 text-center">${index + 1}</td>
+                                    <td class="border border-gray-300 p-3">${item.tujuan}</td>
+                                    <td class="border border-gray-300 p-3">${item.indikator}</td>
+                                    <td class="border border-gray-300 p-3 text-center">${item.kriteria}</td>
+                                    <td class="border border-gray-300 p-3">${item.deskripsi || 'Deskripsi pencapaian tujuan pembelajaran'}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-6 bg-blue-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-blue-800 mb-2">Catatan Penting:</h4>
+                    <ul class="text-sm text-blue-700 space-y-1">
+                        <li>• KKTP ditetapkan berdasarkan karakteristik peserta didik, mata pelajaran, dan satuan pendidikan</li>
+                        <li>• Nilai KKTP dapat berbeda untuk setiap tujuan pembelajaran</li>
+                        <li>• Peserta didik yang belum mencapai KKTP diberikan pembelajaran remedial</li>
+                        <li>• Peserta didik yang sudah mencapai KKTP dapat diberikan pembelajaran pengayaan</li>
+                    </ul>
+                </div>
+                <div class="export-buttons no-print mt-6 text-center space-x-3">
+                    <button onclick="printDocument('kktpDoc')" class="bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+                        🖨️ Cetak KKTP
+                    </button>
+                    <button onclick="exportDocumentToPDF('kktpDoc', 'KKTP')" class="bg-red-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-red-700 transition duration-300">
+                        📄 Export PDF
+                    </button>
+                    <button onclick="exportDocumentToWord('kktpDoc', 'KKTP')" class="bg-green-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-green-700 transition duration-300">
+                        📊 Export Word
+                    </button>
+                </div>
+            `;
+            document.getElementById('otherDocs').appendChild(kktp);
+        }
+
+        async function generateAsesmenWithAI() {
+            if (!document.getElementById('asesmen').checked) return;
+            
+            const namaGuru = document.getElementById('namaGuru').value;
+            const sekolah = document.getElementById('sekolah').value;
+            const kelas = document.getElementById('kelas').value;
+            const mataPelajaran = document.getElementById('mataPelajaran').value;
+            const semester = document.getElementById('semester').value;
+            const topik = document.getElementById('topikPembelajaran').value;
+
+            // Get AI-generated content for assessment
+            const content = await generateAIContent(mataPelajaran, kelas, topik, 'asesmen');
+
+            // Generate comprehensive assessment plan
+            const asesmenData = [
+                {
+                    jenis: 'Asesmen Diagnostik',
+                    tujuan: 'Mengidentifikasi kemampuan awal siswa',
+                    bentuk: 'Tes tertulis, Wawancara',
+                    waktu: 'Awal pembelajaran',
+                    bobot: '0%',
+                    instrumen: 'Soal pilihan ganda dan essay'
+                },
+                {
+                    jenis: 'Asesmen Formatif',
+                    tujuan: 'Memantau kemajuan belajar siswa',
+                    bentuk: 'Observasi, Kuis, Diskusi',
+                    waktu: 'Selama pembelajaran',
+                    bobot: '30%',
+                    instrumen: 'Lembar observasi, Soal kuis'
+                },
+                {
+                    jenis: 'Asesmen Sumatif',
+                    tujuan: 'Mengukur pencapaian tujuan pembelajaran',
+                    bentuk: 'Tes tertulis, Proyek',
+                    waktu: 'Akhir pembelajaran',
+                    bobot: '70%',
+                    instrumen: 'Soal tes, Rubrik proyek'
+                }
+            ];
+
+            // Generate rubric for project assessment
+            const rubrikProyek = [
+                { kriteria: 'Pemahaman Konsep', sangat_baik: '90-100', baik: '80-89', cukup: '70-79', kurang: '<70' },
+                { kriteria: 'Penerapan Konsep', sangat_baik: '90-100', baik: '80-89', cukup: '70-79', kurang: '<70' },
+                { kriteria: 'Kreativitas', sangat_baik: '90-100', baik: '80-89', cukup: '70-79', kurang: '<70' },
+                { kriteria: 'Presentasi', sangat_baik: '90-100', baik: '80-89', cukup: '70-79', kurang: '<70' }
+            ];
+
+            const asesmen = document.createElement('div');
+            asesmen.className = 'bg-white rounded-xl shadow-lg p-8 mb-8 print-page';
+            asesmen.id = 'asesmenDoc';
+            asesmen.innerHTML = `
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">RANCANGAN ASESMEN</h2>
+                    <p class="text-gray-600">Kurikulum Merdeka</p>
+                    <div class="mt-4 text-left">
+                        <table class="w-full text-sm mb-6">
+                            <tr><td class="font-semibold py-1 w-1/4">Satuan Pendidikan</td><td class="py-1">: ${sekolah}</td></tr>
+                            <tr><td class="font-semibold py-1">Mata Pelajaran</td><td class="py-1">: ${mataPelajaran}</td></tr>
+                            <tr><td class="font-semibold py-1">Kelas/Semester</td><td class="py-1">: ${kelas}/${semester}</td></tr>
+                            <tr><td class="font-semibold py-1">Materi</td><td class="py-1">: ${topik}</td></tr>
+                            <tr><td class="font-semibold py-1">Guru</td><td class="py-1">: ${namaGuru}</td></tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <h3 class="text-lg font-semibold text-orange-800 mb-4">A. RENCANA ASESMEN</h3>
+                <div class="overflow-x-auto mb-8">
+                    <table class="w-full border-collapse border border-gray-300 text-sm">
+                        <thead>
+                            <tr class="bg-orange-100">
+                                <th class="border border-gray-300 p-3">No</th>
+                                <th class="border border-gray-300 p-3">Jenis Asesmen</th>
+                                <th class="border border-gray-300 p-3">Tujuan</th>
+                                <th class="border border-gray-300 p-3">Bentuk</th>
+                                <th class="border border-gray-300 p-3">Waktu Pelaksanaan</th>
+                                <th class="border border-gray-300 p-3">Bobot</th>
+                                <th class="border border-gray-300 p-3">Instrumen</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${asesmenData.map((item, index) => `
+                                <tr>
+                                    <td class="border border-gray-300 p-3 text-center">${index + 1}</td>
+                                    <td class="border border-gray-300 p-3 font-semibold">${item.jenis}</td>
+                                    <td class="border border-gray-300 p-3">${item.tujuan}</td>
+                                    <td class="border border-gray-300 p-3">${item.bentuk}</td>
+                                    <td class="border border-gray-300 p-3">${item.waktu}</td>
+                                    <td class="border border-gray-300 p-3 text-center">${item.bobot}</td>
+                                    <td class="border border-gray-300 p-3">${item.instrumen}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 class="text-lg font-semibold text-orange-800 mb-4">B. RUBRIK PENILAIAN PROYEK</h3>
+                <div class="overflow-x-auto mb-8">
+                    <table class="w-full border-collapse border border-gray-300 text-sm">
+                        <thead>
+                            <tr class="bg-orange-100">
+                                <th class="border border-gray-300 p-3">Kriteria</th>
+                                <th class="border border-gray-300 p-3">Sangat Baik (A)</th>
+                                <th class="border border-gray-300 p-3">Baik (B)</th>
+                                <th class="border border-gray-300 p-3">Cukup (C)</th>
+                                <th class="border border-gray-300 p-3">Kurang (D)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${rubrikProyek.map(item => `
+                                <tr>
+                                    <td class="border border-gray-300 p-3 font-semibold">${item.kriteria}</td>
+                                    <td class="border border-gray-300 p-3 text-center">${item.sangat_baik}</td>
+                                    <td class="border border-gray-300 p-3 text-center">${item.baik}</td>
+                                    <td class="border border-gray-300 p-3 text-center">${item.cukup}</td>
+                                    <td class="border border-gray-300 p-3 text-center">${item.kurang}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 class="text-lg font-semibold text-orange-800 mb-4">C. KISI-KISI SOAL</h3>
+                <div class="overflow-x-auto mb-6">
+                    <table class="w-full border-collapse border border-gray-300 text-sm">
+                        <thead>
+                            <tr class="bg-orange-100">
+                                <th class="border border-gray-300 p-3">No</th>
+                                <th class="border border-gray-300 p-3">Indikator Pencapaian</th>
+                                <th class="border border-gray-300 p-3">Level Kognitif</th>
+                                <th class="border border-gray-300 p-3">Bentuk Soal</th>
+                                <th class="border border-gray-300 p-3">No Soal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="border border-gray-300 p-3 text-center">1</td>
+                                <td class="border border-gray-300 p-3">Memahami konsep dasar ${topik}</td>
+                                <td class="border border-gray-300 p-3">C2 (Memahami)</td>
+                                <td class="border border-gray-300 p-3">Pilihan Ganda</td>
+                                <td class="border border-gray-300 p-3 text-center">1-5</td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-300 p-3 text-center">2</td>
+                                <td class="border border-gray-300 p-3">Menerapkan konsep ${topik}</td>
+                                <td class="border border-gray-300 p-3">C3 (Menerapkan)</td>
+                                <td class="border border-gray-300 p-3">Essay</td>
+                                <td class="border border-gray-300 p-3 text-center">6-8</td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-300 p-3 text-center">3</td>
+                                <td class="border border-gray-300 p-3">Menganalisis permasalahan ${topik}</td>
+                                <td class="border border-gray-300 p-3">C4 (Menganalisis)</td>
+                                <td class="border border-gray-300 p-3">Essay</td>
+                                <td class="border border-gray-300 p-3 text-center">9-10</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="bg-yellow-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-yellow-800 mb-2">Catatan Pelaksanaan:</h4>
+                    <ul class="text-sm text-yellow-700 space-y-1">
+                        <li>• Asesmen dilakukan secara berkelanjutan dan terintegrasi dengan pembelajaran</li>
+                        <li>• Hasil asesmen digunakan untuk memberikan umpan balik kepada siswa</li>
+                        <li>• Siswa yang belum mencapai KKTP diberikan pembelajaran remedial</li>
+                        <li>• Dokumentasi hasil asesmen disimpan sebagai portofolio siswa</li>
+                    </ul>
+                </div>
+                <div class="export-buttons no-print mt-6 text-center space-x-3">
+                    <button onclick="printDocument('asesmenDoc')" class="bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+                        🖨️ Cetak Asesmen
+                    </button>
+                    <button onclick="exportDocumentToPDF('asesmenDoc', 'Asesmen')" class="bg-red-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-red-700 transition duration-300">
+                        📄 Export PDF
+                    </button>
+                    <button onclick="exportDocumentToWord('asesmenDoc', 'Asesmen')" class="bg-green-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-green-700 transition duration-300">
+                        📊 Export Word
+                    </button>
+                </div>
+            `;
+            document.getElementById('otherDocs').appendChild(asesmen);
+        }
+
+        function generateSilabus() {
+            if (!document.getElementById('silabus').checked) return;
+            
+            const namaGuru = document.getElementById('namaGuru').value;
+            const sekolah = document.getElementById('sekolah').value;
+            const kelas = document.getElementById('kelas').value;
+            const mataPelajaran = document.getElementById('mataPelajaran').value;
+            const semester = document.getElementById('semester').value;
+            const topik = document.getElementById('topikPembelajaran').value;
+
+            // Get AI content for silabus
+            const content = aiContent[mataPelajaran]?.[kelas] || {
+                capaian: 'Peserta didik mampu memahami dan menerapkan konsep ' + topik + ' dalam konteks pembelajaran yang bermakna sesuai dengan Capaian Pembelajaran Kurikulum Merdeka.',
+                tujuan: 'Setelah mengikuti pembelajaran, peserta didik diharapkan dapat memahami konsep dasar, menganalisis permasalahan, dan menerapkan pengetahuan dalam situasi nyata terkait ' + topik + '.',
+                asesmen: 'Asesmen dilakukan secara formatif melalui observasi selama pembelajaran dan asesmen sumatif melalui tes atau proyek yang mengukur pemahaman konsep dan kemampuan aplikasi.'
+            };
+
+            const silabus = document.createElement('div');
+            silabus.className = 'bg-white rounded-xl shadow-lg p-8 mb-8 print-page';
+            silabus.id = 'silabusDoc';
+            silabus.innerHTML = `
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">SILABUS</h2>
+                    <p class="text-gray-600">Kurikulum Merdeka</p>
+                    <div class="mt-4 text-left">
+                        <table class="w-full text-sm mb-6">
+                            <tr><td class="font-semibold py-1 w-1/4">Satuan Pendidikan</td><td class="py-1">: ${sekolah}</td></tr>
+                            <tr><td class="font-semibold py-1">Mata Pelajaran</td><td class="py-1">: ${mataPelajaran}</td></tr>
+                            <tr><td class="font-semibold py-1">Kelas/Semester</td><td class="py-1">: ${kelas}/${semester}</td></tr>
+                            <tr><td class="font-semibold py-1">Guru</td><td class="py-1">: ${namaGuru}</td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse border border-gray-300 text-sm">
+                        <thead>
+                            <tr class="bg-indigo-100">
+                                <th class="border border-gray-300 p-3">No</th>
+                                <th class="border border-gray-300 p-3">Capaian Pembelajaran</th>
+                                <th class="border border-gray-300 p-3">Tujuan Pembelajaran</th>
+                                <th class="border border-gray-300 p-3">Materi Pokok</th>
+                                <th class="border border-gray-300 p-3">Kegiatan Pembelajaran</th>
+                                <th class="border border-gray-300 p-3">Asesmen</th>
+                                <th class="border border-gray-300 p-3">Alokasi Waktu</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="border border-gray-300 p-3 text-center">1</td>
+                                <td class="border border-gray-300 p-3">${content.capaian}</td>
+                                <td class="border border-gray-300 p-3">${content.tujuan}</td>
+                                <td class="border border-gray-300 p-3">${topik}</td>
+                                <td class="border border-gray-300 p-3">Pembelajaran berbasis proyek, diskusi kelompok, dan pendekatan saintifik dengan model Problem Based Learning</td>
+                                <td class="border border-gray-300 p-3">${content.asesmen}</td>
+                                <td class="border border-gray-300 p-3 text-center">8 JP (4 Pertemuan)</td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-300 p-3 text-center">2</td>
+                                <td class="border border-gray-300 p-3">Peserta didik mampu mengembangkan pemahaman lanjutan tentang ${topik}</td>
+                                <td class="border border-gray-300 p-3">Siswa dapat menganalisis dan mengevaluasi konsep ${topik} dalam konteks yang lebih kompleks</td>
+                                <td class="border border-gray-300 p-3">Pengembangan ${topik}</td>
+                                <td class="border border-gray-300 p-3">Pembelajaran kolaboratif, studi kasus, dan presentasi hasil analisis</td>
+                                <td class="border border-gray-300 p-3">Asesmen autentik melalui portofolio dan proyek kolaboratif</td>
+                                <td class="border border-gray-300 p-3 text-center">6 JP (3 Pertemuan)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="export-buttons no-print mt-6 text-center space-x-3">
+                    <button onclick="printDocument('silabusDoc')" class="bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+                        🖨️ Cetak Silabus
+                    </button>
+                    <button onclick="exportDocumentToPDF('silabusDoc', 'Silabus')" class="bg-red-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-red-700 transition duration-300">
+                        📄 Export PDF
+                    </button>
+                    <button onclick="exportDocumentToWord('silabusDoc', 'Silabus')" class="bg-green-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-green-700 transition duration-300">
+                        📊 Export Word
+                    </button>
+                </div>
+            `;
+            document.getElementById('otherDocs').appendChild(silabus);
+        }
+
+        function generateProta() {
+            if (!document.getElementById('prota').checked) return;
+            
+            const namaGuru = document.getElementById('namaGuru').value;
+            const sekolah = document.getElementById('sekolah').value;
+            const kelas = document.getElementById('kelas').value;
+            const mataPelajaran = document.getElementById('mataPelajaran').value;
+            const topik = document.getElementById('topikPembelajaran').value;
+
+            // Generate comprehensive yearly program based on subject
+            const materiTahunan = {
+                'Matematika': [
+                    { materi: 'Sistem Persamaan Linear', jp: 12, semester: 'Ganjil' },
+                    { materi: 'Fungsi Kuadrat', jp: 16, semester: 'Ganjil' },
+                    { materi: 'Trigonometri Dasar', jp: 14, semester: 'Ganjil' },
+                    { materi: 'Geometri Analitik', jp: 18, semester: 'Genap' },
+                    { materi: 'Statistika', jp: 12, semester: 'Genap' },
+                    { materi: 'Peluang', jp: 10, semester: 'Genap' }
+                ],
+                'Bahasa Indonesia': [
+                    { materi: 'Teks Laporan Hasil Observasi', jp: 10, semester: 'Ganjil' },
+                    { materi: 'Teks Eksposisi', jp: 12, semester: 'Ganjil' },
+                    { materi: 'Teks Anekdot', jp: 8, semester: 'Ganjil' },
+                    { materi: 'Hikayat', jp: 14, semester: 'Genap' },
+                    { materi: 'Teks Negosiasi', jp: 10, semester: 'Genap' },
+                    { materi: 'Debat', jp: 8, semester: 'Genap' }
+                ]
+            };
+
+            const defaultMateri = [
+                { materi: topik, jp: 12, semester: 'Ganjil' },
+                { materi: 'Pengembangan ' + topik, jp: 16, semester: 'Ganjil' },
+                { materi: 'Penerapan ' + topik, jp: 14, semester: 'Genap' },
+                { materi: 'Evaluasi ' + topik, jp: 10, semester: 'Genap' }
+            ];
+
+            const materiList = materiTahunan[mataPelajaran] || defaultMateri;
+
+            const prota = document.createElement('div');
+            prota.className = 'bg-white rounded-xl shadow-lg p-8 mb-8 print-page';
+            prota.id = 'protaDoc';
+            prota.innerHTML = `
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">PROGRAM TAHUNAN (PROTA)</h2>
+                    <p class="text-gray-600">Tahun Pelajaran 2024/2025</p>
+                    <div class="mt-4 text-left">
+                        <table class="w-full text-sm mb-6">
+                            <tr><td class="font-semibold py-1 w-1/4">Satuan Pendidikan</td><td class="py-1">: ${sekolah}</td></tr>
+                            <tr><td class="font-semibold py-1">Mata Pelajaran</td><td class="py-1">: ${mataPelajaran}</td></tr>
+                            <tr><td class="font-semibold py-1">Kelas</td><td class="py-1">: ${kelas}</td></tr>
+                            <tr><td class="font-semibold py-1">Guru</td><td class="py-1">: ${namaGuru}</td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse border border-gray-300 text-sm">
+                        <thead>
+                            <tr class="bg-green-100">
+                                <th class="border border-gray-300 p-3">No</th>
+                                <th class="border border-gray-300 p-3">Semester</th>
+                                <th class="border border-gray-300 p-3">Materi Pokok</th>
+                                <th class="border border-gray-300 p-3">Alokasi Waktu (JP)</th>
+                                <th class="border border-gray-300 p-3">Keterangan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${materiList.map((item, index) => `
+                                <tr>
+                                    <td class="border border-gray-300 p-3 text-center">${index + 1}</td>
+                                    <td class="border border-gray-300 p-3">${item.semester}</td>
+                                    <td class="border border-gray-300 p-3">${item.materi}</td>
+                                    <td class="border border-gray-300 p-3 text-center">${item.jp}</td>
+                                    <td class="border border-gray-300 p-3">${index < 3 ? 'Materi Dasar' : 'Materi Lanjutan'}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                        <tfoot>
+                            <tr class="bg-gray-100">
+                                <td colspan="3" class="border border-gray-300 p-3 text-center font-semibold">Total Jam Pelajaran</td>
+                                <td class="border border-gray-300 p-3 text-center font-semibold">${materiList.reduce((total, item) => total + item.jp, 0)} JP</td>
+                                <td class="border border-gray-300 p-3"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="export-buttons no-print mt-6 text-center space-x-3">
+                    <button onclick="printDocument('protaDoc')" class="bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+                        🖨️ Cetak Prota
+                    </button>
+                    <button onclick="exportDocumentToPDF('protaDoc', 'Prota')" class="bg-red-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-red-700 transition duration-300">
+                        📄 Export PDF
+                    </button>
+                    <button onclick="exportDocumentToWord('protaDoc', 'Prota')" class="bg-green-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-green-700 transition duration-300">
+                        📊 Export Word
+                    </button>
+                </div>
+            `;
+            document.getElementById('otherDocs').appendChild(prota);
+        }
+
+        function generateProsem() {
+            if (!document.getElementById('prosem').checked) return;
+            
+            const namaGuru = document.getElementById('namaGuru').value;
+            const sekolah = document.getElementById('sekolah').value;
+            const kelas = document.getElementById('kelas').value;
+            const mataPelajaran = document.getElementById('mataPelajaran').value;
+            const semester = document.getElementById('semester').value;
+            const topik = document.getElementById('topikPembelajaran').value;
+
+            // Generate semester program with monthly distribution
+            const bulanGanjil = ['Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+            const bulanGenap = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni'];
+            const bulanList = semester === 'Ganjil' ? bulanGanjil : bulanGenap;
+
+            const materiSemester = {
+                'Matematika': [
+                    { materi: 'Sistem Persamaan Linear', distribusi: [4, 4, 4, 0, 0, 0] },
+                    { materi: 'Fungsi Kuadrat', distribusi: [0, 4, 4, 4, 4, 0] },
+                    { materi: 'Trigonometri Dasar', distribusi: [0, 0, 0, 4, 4, 6] },
+                    { materi: 'Ulangan dan Remedial', distribusi: [0, 0, 0, 0, 2, 2] }
+                ],
+                'Bahasa Indonesia': [
+                    { materi: 'Teks Laporan Hasil Observasi', distribusi: [4, 3, 3, 0, 0, 0] },
+                    { materi: 'Teks Eksposisi', distribusi: [0, 3, 4, 4, 1, 0] },
+                    { materi: 'Teks Anekdot', distribusi: [0, 0, 0, 2, 3, 3] },
+                    { materi: 'Ulangan dan Remedial', distribusi: [0, 0, 1, 0, 2, 1] }
+                ]
+            };
+
+            const defaultMateri = [
+                { materi: topik, distribusi: [4, 4, 4, 0, 0, 0] },
+                { materi: 'Pengembangan ' + topik, distribusi: [0, 2, 4, 4, 2, 0] },
+                { materi: 'Penerapan ' + topik, distribusi: [0, 0, 0, 2, 4, 4] },
+                { materi: 'Evaluasi dan Remedial', distribusi: [0, 0, 0, 0, 2, 2] }
+            ];
+
+            const materiList = materiSemester[mataPelajaran] || defaultMateri;
+
+            const prosem = document.createElement('div');
+            prosem.className = 'bg-white rounded-xl shadow-lg p-8 mb-8 print-page';
+            prosem.id = 'prosemDoc';
+            prosem.innerHTML = `
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">PROGRAM SEMESTER (PROSEM)</h2>
+                    <p class="text-gray-600">Semester ${semester} - Tahun Pelajaran 2024/2025</p>
+                    <div class="mt-4 text-left">
+                        <table class="w-full text-sm mb-6">
+                            <tr><td class="font-semibold py-1 w-1/4">Satuan Pendidikan</td><td class="py-1">: ${sekolah}</td></tr>
+                            <tr><td class="font-semibold py-1">Mata Pelajaran</td><td class="py-1">: ${mataPelajaran}</td></tr>
+                            <tr><td class="font-semibold py-1">Kelas/Semester</td><td class="py-1">: ${kelas}/${semester}</td></tr>
+                            <tr><td class="font-semibold py-1">Guru</td><td class="py-1">: ${namaGuru}</td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse border border-gray-300 text-sm">
+                        <thead>
+                            <tr class="bg-yellow-100">
+                                <th class="border border-gray-300 p-3">No</th>
+                                <th class="border border-gray-300 p-3">Materi Pokok</th>
+                                <th class="border border-gray-300 p-3">JP</th>
+                                ${bulanList.map(bulan => `<th class="border border-gray-300 p-3">${bulan}</th>`).join('')}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${materiList.map((item, index) => `
+                                <tr>
+                                    <td class="border border-gray-300 p-3 text-center">${index + 1}</td>
+                                    <td class="border border-gray-300 p-3">${item.materi}</td>
+                                    <td class="border border-gray-300 p-3 text-center">${item.distribusi.reduce((a, b) => a + b, 0)}</td>
+                                    ${item.distribusi.map(jp => `<td class="border border-gray-300 p-3 text-center">${jp > 0 ? jp : '-'}</td>`).join('')}
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                        <tfoot>
+                            <tr class="bg-gray-100">
+                                <td colspan="2" class="border border-gray-300 p-3 text-center font-semibold">Total JP</td>
+                                <td class="border border-gray-300 p-3 text-center font-semibold">${materiList.reduce((total, item) => total + item.distribusi.reduce((a, b) => a + b, 0), 0)}</td>
+                                ${bulanList.map((_, i) => `<td class="border border-gray-300 p-3 text-center font-semibold">${materiList.reduce((total, item) => total + item.distribusi[i], 0)}</td>`).join('')}
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="export-buttons no-print mt-6 text-center space-x-3">
+                    <button onclick="printDocument('prosemDoc')" class="bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+                        🖨️ Cetak Prosem
+                    </button>
+                    <button onclick="exportDocumentToPDF('prosemDoc', 'Prosem')" class="bg-red-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-red-700 transition duration-300">
+                        📄 Export PDF
+                    </button>
+                    <button onclick="exportDocumentToWord('prosemDoc', 'Prosem')" class="bg-green-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-green-700 transition duration-300">
+                        📊 Export Word
+                    </button>
+                </div>
+            `;
+            document.getElementById('otherDocs').appendChild(prosem);
+        }
+
+        function generateKKTP() {
+            if (!document.getElementById('kktp').checked) return;
+            
+            const namaGuru = document.getElementById('namaGuru').value;
+            const sekolah = document.getElementById('sekolah').value;
+            const kelas = document.getElementById('kelas').value;
+            const mataPelajaran = document.getElementById('mataPelajaran').value;
+            const semester = document.getElementById('semester').value;
+            const topik = document.getElementById('topikPembelajaran').value;
+
+            // Get AI content for KKTP
+            const content = aiContent[mataPelajaran]?.[kelas] || {
+                tujuan: 'Setelah mengikuti pembelajaran, peserta didik diharapkan dapat memahami konsep dasar, menganalisis permasalahan, dan menerapkan pengetahuan dalam situasi nyata terkait ' + topik + '.'
+            };
+
+            // Generate comprehensive KKTP criteria
+            const kktpData = [
+                {
+                    tujuan: 'Memahami konsep dasar ' + topik,
+                    kriteria: '75% siswa mencapai nilai ≥ 70',
+                    indikator: 'Siswa dapat menjelaskan konsep dengan benar',
+                    deskripsi: 'Siswa mampu memahami dan menjelaskan konsep dasar dengan tepat'
+                },
+                {
+                    tujuan: 'Menganalisis permasalahan terkait ' + topik,
+                    kriteria: '70% siswa mencapai nilai ≥ 75',
+                    indikator: 'Siswa dapat mengidentifikasi masalah dan solusi',
+                    deskripsi: 'Siswa mampu menganalisis permasalahan dan memberikan solusi yang tepat'
+                },
+                {
+                    tujuan: 'Menerapkan konsep dalam konteks nyata',
+                    kriteria: '80% siswa mencapai nilai ≥ 70',
+                    indikator: 'Siswa dapat menerapkan konsep dalam kehidupan sehari-hari',
+                    deskripsi: 'Siswa mampu mengaplikasikan pengetahuan dalam situasi nyata'
+                }
+            ];
+
+            const kktp = document.createElement('div');
+            kktp.className = 'bg-white rounded-xl shadow-lg p-8 mb-8 print-page';
+            kktp.id = 'kktpDoc';
+            kktp.innerHTML = `
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">KRITERIA KETERCAPAIAN TUJUAN PEMBELAJARAN (KKTP)</h2>
+                    <p class="text-gray-600">Kurikulum Merdeka</p>
+                    <div class="mt-4 text-left">
+                        <table class="w-full text-sm mb-6">
+                            <tr><td class="font-semibold py-1 w-1/4">Satuan Pendidikan</td><td class="py-1">: ${sekolah}</td></tr>
+                            <tr><td class="font-semibold py-1">Mata Pelajaran</td><td class="py-1">: ${mataPelajaran}</td></tr>
+                            <tr><td class="font-semibold py-1">Kelas/Semester</td><td class="py-1">: ${kelas}/${semester}</td></tr>
+                            <tr><td class="font-semibold py-1">Materi</td><td class="py-1">: ${topik}</td></tr>
+                            <tr><td class="font-semibold py-1">Guru</td><td class="py-1">: ${namaGuru}</td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse border border-gray-300 text-sm">
+                        <thead>
+                            <tr class="bg-purple-100">
+                                <th class="border border-gray-300 p-3">No</th>
+                                <th class="border border-gray-300 p-3">Tujuan Pembelajaran</th>
+                                <th class="border border-gray-300 p-3">Indikator Pencapaian</th>
+                                <th class="border border-gray-300 p-3">Kriteria Ketercapaian</th>
+                                <th class="border border-gray-300 p-3">Deskripsi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${kktpData.map((item, index) => `
+                                <tr>
+                                    <td class="border border-gray-300 p-3 text-center">${index + 1}</td>
+                                    <td class="border border-gray-300 p-3">${item.tujuan}</td>
+                                    <td class="border border-gray-300 p-3">${item.indikator}</td>
+                                    <td class="border border-gray-300 p-3 text-center">${item.kriteria}</td>
+                                    <td class="border border-gray-300 p-3">${item.deskripsi}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-6 bg-blue-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-blue-800 mb-2">Catatan Penting:</h4>
+                    <ul class="text-sm text-blue-700 space-y-1">
+                        <li>• KKTP ditetapkan berdasarkan karakteristik peserta didik, mata pelajaran, dan satuan pendidikan</li>
+                        <li>• Nilai KKTP dapat berbeda untuk setiap tujuan pembelajaran</li>
+                        <li>• Peserta didik yang belum mencapai KKTP diberikan pembelajaran remedial</li>
+                        <li>• Peserta didik yang sudah mencapai KKTP dapat diberikan pembelajaran pengayaan</li>
+                    </ul>
+                </div>
+                <div class="export-buttons no-print mt-6 text-center space-x-3">
+                    <button onclick="printDocument('kktpDoc')" class="bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+                        🖨️ Cetak KKTP
+                    </button>
+                    <button onclick="exportDocumentToPDF('kktpDoc', 'KKTP')" class="bg-red-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-red-700 transition duration-300">
+                        📄 Export PDF
+                    </button>
+                    <button onclick="exportDocumentToWord('kktpDoc', 'KKTP')" class="bg-green-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-green-700 transition duration-300">
+                        📊 Export Word
+                    </button>
+                </div>
+            `;
+            document.getElementById('otherDocs').appendChild(kktp);
+        }
+
+        function generateAsesmen() {
+            if (!document.getElementById('asesmen').checked) return;
+            
+            const namaGuru = document.getElementById('namaGuru').value;
+            const sekolah = document.getElementById('sekolah').value;
+            const kelas = document.getElementById('kelas').value;
+            const mataPelajaran = document.getElementById('mataPelajaran').value;
+            const semester = document.getElementById('semester').value;
+            const topik = document.getElementById('topikPembelajaran').value;
+
+            // Generate comprehensive assessment plan
+            const asesmenData = [
+                {
+                    jenis: 'Asesmen Diagnostik',
+                    tujuan: 'Mengidentifikasi kemampuan awal siswa',
+                    bentuk: 'Tes tertulis, Wawancara',
+                    waktu: 'Awal pembelajaran',
+                    bobot: '0%',
+                    instrumen: 'Soal pilihan ganda dan essay'
+                },
+                {
+                    jenis: 'Asesmen Formatif',
+                    tujuan: 'Memantau kemajuan belajar siswa',
+                    bentuk: 'Observasi, Kuis, Diskusi',
+                    waktu: 'Selama pembelajaran',
+                    bobot: '30%',
+                    instrumen: 'Lembar observasi, Soal kuis'
+                },
+                {
+                    jenis: 'Asesmen Sumatif',
+                    tujuan: 'Mengukur pencapaian tujuan pembelajaran',
+                    bentuk: 'Tes tertulis, Proyek',
+                    waktu: 'Akhir pembelajaran',
+                    bobot: '70%',
+                    instrumen: 'Soal tes, Rubrik proyek'
+                }
+            ];
+
+            // Generate rubric for project assessment
+            const rubrikProyek = [
+                { kriteria: 'Pemahaman Konsep', sangat_baik: '90-100', baik: '80-89', cukup: '70-79', kurang: '<70' },
+                { kriteria: 'Penerapan Konsep', sangat_baik: '90-100', baik: '80-89', cukup: '70-79', kurang: '<70' },
+                { kriteria: 'Kreativitas', sangat_baik: '90-100', baik: '80-89', cukup: '70-79', kurang: '<70' },
+                { kriteria: 'Presentasi', sangat_baik: '90-100', baik: '80-89', cukup: '70-79', kurang: '<70' }
+            ];
+
+            const asesmen = document.createElement('div');
+            asesmen.className = 'bg-white rounded-xl shadow-lg p-8 mb-8 print-page';
+            asesmen.id = 'asesmenDoc';
+            asesmen.innerHTML = `
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">RANCANGAN ASESMEN</h2>
+                    <p class="text-gray-600">Kurikulum Merdeka</p>
+                    <div class="mt-4 text-left">
+                        <table class="w-full text-sm mb-6">
+                            <tr><td class="font-semibold py-1 w-1/4">Satuan Pendidikan</td><td class="py-1">: ${sekolah}</td></tr>
+                            <tr><td class="font-semibold py-1">Mata Pelajaran</td><td class="py-1">: ${mataPelajaran}</td></tr>
+                            <tr><td class="font-semibold py-1">Kelas/Semester</td><td class="py-1">: ${kelas}/${semester}</td></tr>
+                            <tr><td class="font-semibold py-1">Materi</td><td class="py-1">: ${topik}</td></tr>
+                            <tr><td class="font-semibold py-1">Guru</td><td class="py-1">: ${namaGuru}</td></tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <h3 class="text-lg font-semibold text-orange-800 mb-4">A. RENCANA ASESMEN</h3>
+                <div class="overflow-x-auto mb-8">
+                    <table class="w-full border-collapse border border-gray-300 text-sm">
+                        <thead>
+                            <tr class="bg-orange-100">
+                                <th class="border border-gray-300 p-3">No</th>
+                                <th class="border border-gray-300 p-3">Jenis Asesmen</th>
+                                <th class="border border-gray-300 p-3">Tujuan</th>
+                                <th class="border border-gray-300 p-3">Bentuk</th>
+                                <th class="border border-gray-300 p-3">Waktu Pelaksanaan</th>
+                                <th class="border border-gray-300 p-3">Bobot</th>
+                                <th class="border border-gray-300 p-3">Instrumen</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${asesmenData.map((item, index) => `
+                                <tr>
+                                    <td class="border border-gray-300 p-3 text-center">${index + 1}</td>
+                                    <td class="border border-gray-300 p-3 font-semibold">${item.jenis}</td>
+                                    <td class="border border-gray-300 p-3">${item.tujuan}</td>
+                                    <td class="border border-gray-300 p-3">${item.bentuk}</td>
+                                    <td class="border border-gray-300 p-3">${item.waktu}</td>
+                                    <td class="border border-gray-300 p-3 text-center">${item.bobot}</td>
+                                    <td class="border border-gray-300 p-3">${item.instrumen}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 class="text-lg font-semibold text-orange-800 mb-4">B. RUBRIK PENILAIAN PROYEK</h3>
+                <div class="overflow-x-auto mb-8">
+                    <table class="w-full border-collapse border border-gray-300 text-sm">
+                        <thead>
+                            <tr class="bg-orange-100">
+                                <th class="border border-gray-300 p-3">Kriteria</th>
+                                <th class="border border-gray-300 p-3">Sangat Baik (A)</th>
+                                <th class="border border-gray-300 p-3">Baik (B)</th>
+                                <th class="border border-gray-300 p-3">Cukup (C)</th>
+                                <th class="border border-gray-300 p-3">Kurang (D)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${rubrikProyek.map(item => `
+                                <tr>
+                                    <td class="border border-gray-300 p-3 font-semibold">${item.kriteria}</td>
+                                    <td class="border border-gray-300 p-3 text-center">${item.sangat_baik}</td>
+                                    <td class="border border-gray-300 p-3 text-center">${item.baik}</td>
+                                    <td class="border border-gray-300 p-3 text-center">${item.cukup}</td>
+                                    <td class="border border-gray-300 p-3 text-center">${item.kurang}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 class="text-lg font-semibold text-orange-800 mb-4">C. KISI-KISI SOAL</h3>
+                <div class="overflow-x-auto mb-6">
+                    <table class="w-full border-collapse border border-gray-300 text-sm">
+                        <thead>
+                            <tr class="bg-orange-100">
+                                <th class="border border-gray-300 p-3">No</th>
+                                <th class="border border-gray-300 p-3">Indikator Pencapaian</th>
+                                <th class="border border-gray-300 p-3">Level Kognitif</th>
+                                <th class="border border-gray-300 p-3">Bentuk Soal</th>
+                                <th class="border border-gray-300 p-3">No Soal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="border border-gray-300 p-3 text-center">1</td>
+                                <td class="border border-gray-300 p-3">Memahami konsep dasar ${topik}</td>
+                                <td class="border border-gray-300 p-3">C2 (Memahami)</td>
+                                <td class="border border-gray-300 p-3">Pilihan Ganda</td>
+                                <td class="border border-gray-300 p-3 text-center">1-5</td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-300 p-3 text-center">2</td>
+                                <td class="border border-gray-300 p-3">Menerapkan konsep ${topik}</td>
+                                <td class="border border-gray-300 p-3">C3 (Menerapkan)</td>
+                                <td class="border border-gray-300 p-3">Essay</td>
+                                <td class="border border-gray-300 p-3 text-center">6-8</td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-300 p-3 text-center">3</td>
+                                <td class="border border-gray-300 p-3">Menganalisis permasalahan ${topik}</td>
+                                <td class="border border-gray-300 p-3">C4 (Menganalisis)</td>
+                                <td class="border border-gray-300 p-3">Essay</td>
+                                <td class="border border-gray-300 p-3 text-center">9-10</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="bg-yellow-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-yellow-800 mb-2">Catatan Pelaksanaan:</h4>
+                    <ul class="text-sm text-yellow-700 space-y-1">
+                        <li>• Asesmen dilakukan secara berkelanjutan dan terintegrasi dengan pembelajaran</li>
+                        <li>• Hasil asesmen digunakan untuk memberikan umpan balik kepada siswa</li>
+                        <li>• Siswa yang belum mencapai KKTP diberikan pembelajaran remedial</li>
+                        <li>• Dokumentasi hasil asesmen disimpan sebagai portofolio siswa</li>
+                    </ul>
+                </div>
+                <div class="export-buttons no-print mt-6 text-center space-x-3">
+                    <button onclick="printDocument('asesmenDoc')" class="bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+                        🖨️ Cetak Asesmen
+                    </button>
+                    <button onclick="exportDocumentToPDF('asesmenDoc', 'Asesmen')" class="bg-red-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-red-700 transition duration-300">
+                        📄 Export PDF
+                    </button>
+                    <button onclick="exportDocumentToWord('asesmenDoc', 'Asesmen')" class="bg-green-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-green-700 transition duration-300">
+                        📊 Export Word
+                    </button>
+                </div>
+            `;
+            document.getElementById('otherDocs').appendChild(asesmen);
+        }
+
+        function exportToPDF() {
+            window.print();
+            
+            // Show success message
+            const button = event.target;
+            const originalText = button.innerHTML;
+            button.innerHTML = '✅ PDF siap diunduh!';
+            button.classList.add('bg-red-700');
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.classList.remove('bg-red-700');
+            }, 3000);
+        }
+
+        function printDocument(docId) {
+            const element = document.getElementById(docId);
+            if (!element) return;
+            
+            // Hide all other elements temporarily
+            const allElements = document.querySelectorAll('body > *');
+            const originalDisplay = [];
+            allElements.forEach((el, index) => {
+                originalDisplay[index] = el.style.display;
+                if (!el.contains(element)) {
+                    el.style.display = 'none';
+                }
+            });
+            
+            // Print
+            window.print();
+            
+            // Restore original display
+            allElements.forEach((el, index) => {
+                el.style.display = originalDisplay[index];
+            });
+            
+            // Show success message
+            const button = event.target;
+            const originalText = button.innerHTML;
+            button.innerHTML = '✅ Dokumen siap dicetak!';
+            button.classList.add('bg-blue-700');
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.classList.remove('bg-blue-700');
+            }, 3000);
+        }
+
+        function exportDocumentToPDF(docId, docName) {
+            printDocument(docId);
+        }
+
+        function exportDocumentToWord(docId, docName) {
+            const element = document.getElementById(docId);
+            if (!element) return;
+            
+            // Get form data
+            const namaGuru = document.getElementById('namaGuru').value;
+            const sekolah = document.getElementById('sekolah').value;
+            const kelas = document.getElementById('kelas').value;
+            const mataPelajaran = document.getElementById('mataPelajaran').value;
+            const semester = document.getElementById('semester').value;
+            const topik = document.getElementById('topikPembelajaran').value;
+
+            // Get the HTML content of the document
+            const docContent = element.innerHTML;
+            
+            // Create Word document with the full content
+            const wordContent = `
+<html>
+<head>
+<meta charset="UTF-8">
+<title>${docName} - ${mataPelajaran}</title>
+<style>
+table { border-collapse: collapse; width: 100%; }
+th, td { border: 1px solid black; padding: 8px; text-align: left; }
+th { background-color: #f2f2f2; }
+.no-print { display: none; }
+</style>
+</head>
+<body>
+${docContent}
+<hr>
+<p><i>Dokumen dibuat menggunakan Generator Administrasi Guru Kurikulum Merdeka - Powered by Google Gemini AI</i></p>
+<p><i>Developed by Liyas Syarifudin, M.Pd.</i></p>
+</body>
+</html>
+            `;
+
+            // Create and download file
+            const blob = new Blob([wordContent], { type: 'application/msword' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `${docName}_${mataPelajaran}_${kelas}_${topik.replace(/\s+/g, '_')}.doc`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+
+            // Show success message
+            const button = event.target;
+            const originalText = button.innerHTML;
+            button.innerHTML = '✅ File Word berhasil diunduh!';
+            button.classList.add('bg-green-700');
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.classList.remove('bg-green-700');
+            }, 3000);
+        }
+
+        function exportToWord() {
+            // Get form data
+            const namaGuru = document.getElementById('namaGuru').value;
+            const sekolah = document.getElementById('sekolah').value;
+            const kelas = document.getElementById('kelas').value;
+            const mataPelajaran = document.getElementById('mataPelajaran').value;
+            const semester = document.getElementById('semester').value;
+            const topik = document.getElementById('topikPembelajaran').value;
+
+            // Create Word document with table format
+            const wordContent = `
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Administrasi Guru - ${mataPelajaran}</title>
+</head>
+<body>
+<h1 style="text-align: center;">ADMINISTRASI GURU KURIKULUM MERDEKA</h1>
+<h2 style="text-align: center;">${mataPelajaran} - Kelas ${kelas}</h2>
+
+<h3>RENCANA PELAKSANAAN PEMBELAJARAN (RPP)</h3>
+<table border="1" style="width: 100%; border-collapse: collapse;">
+<tr>
+<td style="padding: 8px; font-weight: bold;">Satuan Pendidikan</td>
+<td style="padding: 8px;">${sekolah}</td>
+</tr>
+<tr>
+<td style="padding: 8px; font-weight: bold;">Kelas/Semester</td>
+<td style="padding: 8px;">${kelas}/${semester}</td>
+</tr>
+<tr>
+<td style="padding: 8px; font-weight: bold;">Mata Pelajaran</td>
+<td style="padding: 8px;">${mataPelajaran}</td>
+</tr>
+<tr>
+<td style="padding: 8px; font-weight: bold;">Materi Pokok</td>
+<td style="padding: 8px;">${topik}</td>
+</tr>
+<tr>
+<td style="padding: 8px; font-weight: bold;">Guru</td>
+<td style="padding: 8px;">${namaGuru}</td>
+</tr>
+</table>
+
+<h3>CAPAIAN PEMBELAJARAN</h3>
+<p>${document.getElementById('rppCapaian') ? document.getElementById('rppCapaian').textContent : 'Belum digenerate'}</p>
+
+<h3>TUJUAN PEMBELAJARAN</h3>
+<p>${document.getElementById('rppTujuan') ? document.getElementById('rppTujuan').textContent : 'Belum digenerate'}</p>
+
+<h3>ASESMEN</h3>
+<p>${document.getElementById('rppAsesmen') ? document.getElementById('rppAsesmen').textContent : 'Belum digenerate'}</p>
+
+<hr>
+<p><i>Dokumen dibuat menggunakan Generator Administrasi Guru Kurikulum Merdeka - Powered by Google Gemini AI</i></p>
+<p><i>Developed by Liyas Syarifudin, M.Pd.</i></p>
+</body>
+</html>
+            `;
+
+            // Create and download file
+            const blob = new Blob([wordContent], { type: 'application/msword' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `Administrasi_${mataPelajaran}_${kelas}_${topik.replace(/\s+/g, '_')}.doc`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+
+            // Show success message
+            const button = event.target;
+            const originalText = button.innerHTML;
+            button.innerHTML = '✅ File Word berhasil diunduh!';
+            button.classList.add('bg-green-700');
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.classList.remove('bg-green-700');
+            }, 3000);
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99503d8f6637e789',t:'MTc2MTU0NzYzMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

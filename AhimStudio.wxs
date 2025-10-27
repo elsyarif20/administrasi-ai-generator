@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*" Name="Ahim Studio Code" Language="1033" Version="7.0.0"
+           Manufacturer="Pondok Modern Al Ghozali" UpgradeCode="12345678-ABCD-4321-ABCD-1234567890AB">
+
+    <Package InstallerVersion="500" Compressed="yes" InstallScope="perMachine" />
+    <MediaTemplate />
+    <Icon Id="AppIcon" SourceFile="assets\icon.ico" />
+    <Property Id="ARPPRODUCTICON" Value="AppIcon" />
+
+    <!-- Struktur direktori -->
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="AhimStudio" />
+      </Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="AhimStudioShortcutFolder" Name="Ahim Studio Code" />
+      </Directory>
+    </Directory>
+
+    <!-- File utama -->
+    <DirectoryRef Id="INSTALLFOLDER">
+      <Component Id="MainExecutable" Guid="11111111-1111-1111-1111-111111111111">
+        <File Id="AhimStudioEXE" Source="dist\AhimStudio.exe" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+
+    <!-- Ikon aplikasi -->
+    <DirectoryRef Id="INSTALLFOLDER">
+      <Component Id="AppIcon" Guid="22222222-2222-2222-2222-222222222222">
+        <File Id="AppIconFile" Source="assets\icon.ico" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+
+    <!-- Shortcut Start Menu -->
+    <DirectoryRef Id="AhimStudioShortcutFolder">
+      <Component Id="ApplicationShortcut" Guid="33333333-3333-3333-3333-333333333333">
+        <Shortcut Id="StartMenuShortcut"
+                  Name="Ahim Studio Code"
+                  Description="Ahim Studio Editor"
+                  Target="[INSTALLFOLDER]AhimStudio.exe"
+                  WorkingDirectory="INSTALLFOLDER"
+                  Icon="AppIcon" />
+        <RemoveFolder Id="RemoveShortcut" On="uninstall" />
+        <RegistryValue Root="HKCU" Key="Software\AhimStudio" Name="Installed" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+
+    <!-- Fitur -->
+    <Feature Id="DefaultFeature" Level="1">
+      <ComponentRef Id="MainExecutable" />
+      <ComponentRef Id="AppIcon" />
+      <ComponentRef Id="ApplicationShortcut" />
+    </Feature>
+
+  </Product>
+</Wix>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistem Absensi Guru AI</title>
+  <link rel="stylesheet" href="./style.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <header class="app-header">
+    <h1>Sistem Absensi Guru AI</h1>
+    <button id="themeToggle" class="btn btn-ghost" type="button">🌙 Dark/Light</button>
+  </header>
+
+  <main class="container">
+    <section id="loginSection" class="card">
+      <h2>Login</h2>
+      <p class="muted">Masuk sebagai Guru atau Admin.</p>
+      <form id="loginForm" class="form-grid">
+        <label>
+          Email
+          <input id="email" type="email" required placeholder="email@sekolah.sch.id" />
+        </label>
+        <label>
+          Password
+          <input id="password" type="password" required minlength="6" />
+        </label>
+        <button class="btn" type="submit">Masuk</button>
+      </form>
+      <small class="muted">Role dibaca dari Firestore: collection <code>users</code>.</small>
+    </section>
+
+    <section id="guruSection" class="card hidden">
+      <div class="section-head">
+        <h2>Dashboard Guru</h2>
+        <button id="logoutGuru" class="btn btn-danger" type="button">Logout</button>
+      </div>
+      <p id="guruInfo" class="muted"></p>
+
+      <div class="camera-wrap">
+        <video id="video" autoplay playsinline muted></video>
+        <canvas id="snapshotCanvas" class="hidden"></canvas>
+      </div>
+
+      <div class="actions">
+        <button id="startCameraBtn" class="btn" type="button">Aktifkan Kamera</button>
+        <button id="absenBtn" class="btn btn-success" type="button">Ambil Absensi Sekarang</button>
+      </div>
+
+      <div id="absenResult" class="status-box"></div>
+    </section>
+
+    <section id="adminSection" class="card hidden">
+      <div class="section-head">
+        <h2>Dashboard Admin</h2>
+        <button id="logoutAdmin" class="btn btn-danger" type="button">Logout</button>
+      </div>
+
+      <div class="actions">
+        <button id="exportExcelBtn" class="btn" type="button">Export Excel</button>
+        <button id="exportPdfBtn" class="btn" type="button">Export PDF</button>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Waktu</th>
+              <th>Nama</th>
+              <th>Status</th>
+              <th>Jarak (m)</th>
+              <th>Lokasi</th>
+            </tr>
+          </thead>
+          <tbody id="logTableBody"></tbody>
+        </table>
+      </div>
+
+      <div class="chart-wrap">
+        <canvas id="attendanceChart"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer muted">
+    <p>Deploy ready untuk GitHub Pages • Client-side only</p>
+  </footer>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
